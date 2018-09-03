@@ -14,6 +14,7 @@
 		260A285B213CE44B00FBDE8D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 260A2859213CE44B00FBDE8D /* LaunchScreen.storyboard */; };
 		260A2866213CE44B00FBDE8D /* WYBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260A2865213CE44B00FBDE8D /* WYBTests.swift */; };
 		260A2871213CE44B00FBDE8D /* WYBUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260A2870213CE44B00FBDE8D /* WYBUITests.swift */; };
+		26B032DF213CEA54005D9CC7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B032DE213CEA54005D9CC7 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		260A286C213CE44B00FBDE8D /* WYBUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WYBUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		260A2870213CE44B00FBDE8D /* WYBUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WYBUITests.swift; sourceTree = "<group>"; };
 		260A2872213CE44B00FBDE8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		26B032DE213CEA54005D9CC7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 		260A284F213CE44800FBDE8D /* WYB */ = {
 			isa = PBXGroup;
 			children = (
+				26B032DD213CEA39005D9CC7 /* ViewControllers */,
 				260A2850213CE44800FBDE8D /* AppDelegate.swift */,
 				260A2852213CE44800FBDE8D /* ViewController.swift */,
 				260A2854213CE44800FBDE8D /* Main.storyboard */,
@@ -123,6 +126,14 @@
 				260A2872213CE44B00FBDE8D /* Info.plist */,
 			);
 			path = WYBUITests;
+			sourceTree = "<group>";
+		};
+		26B032DD213CEA39005D9CC7 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				26B032DE213CEA54005D9CC7 /* LoginViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26B032DF213CEA54005D9CC7 /* LoginViewController.swift in Sources */,
 				260A2853213CE44800FBDE8D /* ViewController.swift in Sources */,
 				260A2851213CE44800FBDE8D /* AppDelegate.swift in Sources */,
 			);
@@ -430,14 +442,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = WYB/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = personal.WYB;
+				PRODUCT_BUNDLE_IDENTIFIER = com.WYB.prisoka;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -447,14 +462,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = WYB/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = personal.WYB;
+				PRODUCT_BUNDLE_IDENTIFIER = com.WYB.prisoka;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
