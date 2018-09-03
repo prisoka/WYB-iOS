@@ -16,6 +16,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     private var email = ""
     private var password = ""
+    private let networkClient = NetworkClient()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,13 +36,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction func loginButtonTapped(_ sender: Any) {
         self.isEditing = false
-        email = emailTextField.text ?? ""
+        email = emailTextField.text ?? "" // ?? means: if field is empty, set email to empty string
         password = passwordTextField.text ?? ""
 
         print("Hello world")
         print(email)
         print(password)
         
+        networkClient.login(email: email, password: password)
         
     }
 //
