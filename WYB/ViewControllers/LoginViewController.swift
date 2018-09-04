@@ -13,7 +13,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     private var email = ""
     private var password = ""
     private let networkClient = NetworkClient()
@@ -21,6 +22,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        activityIndicator.isHidden = true
         emailTextField.delegate = self
         passwordTextField.delegate = self
         
@@ -38,15 +40,35 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.isEditing = false
         email = emailTextField.text ?? "" // ?? means: if field is empty, set email to empty string
         password = passwordTextField.text ?? ""
-
-        print("Hello world")
-        print(email)
-        print(password)
         
-        networkClient.login(email: email, password: password)
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+        
+        networkClient.login(email: email, password: password, completionBlock: { (loginResponse,error)  in
+            print("login success")
+
+            DispatchQueue.main.async {
+                self.activityIndicator.isHidden = true
+                self.activityIndicator.stopAnimating()
+
+                if let error = error {
+                    self.displayAlert(message: error.error.message)
+                } else {
+                    //Do something with loginResponse here
+                }
+            }
+        })
         
     }
-//
+    
+    // instantiating and presenting alert box
+    private func displayAlert(message: String) {
+        let alertController = UIAlertController(title: message, message: nil, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(alertAction)
+        present(alertController, animated: true, completion: nil)
+    }
+
 //    public func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
 //        if let text = textField.text {
 //            if(textField == emailTextField){

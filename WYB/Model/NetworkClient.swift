@@ -14,6 +14,12 @@ import Foundation
 struct LoginRequest: Codable {
     let email: String
     let password: String
+    
+    // the struct auto generates this initializer for you (kinda the same as contructor in JS):
+    init(email: String, password: String) {
+        self.email = email
+        self.password = password
+    }
 }
 
 // Struct: data structure that holds user's properties.
@@ -23,6 +29,14 @@ struct LoginResponse: Codable {
     let user_id: Int
     let first_name: String
     let user_type: UserType
+}
+
+struct LoginResponseError: Codable {
+    let error: LoginErrorMessage
+}
+
+struct LoginErrorMessage: Codable {
+    let message: String
 }
 
 // handling cases for different user types (user/walker) for safety
@@ -37,7 +51,7 @@ class NetworkClient {
     let apiUrl = "https://wyb-api.herokuapp.com/api/"
     
     // func for sending http req to login end point, and hande response
-    func login(email: String, password: String) {
+    func login(email: String, password: String, completionBlock: @escaping (LoginResponse?, LoginResponseError?) -> Void) {
         
         // storing the email and password in the LoginRequest obj
         let loginRequest = LoginRequest(email: email, password: password)
@@ -61,15 +75,22 @@ class NetworkClient {
                 // if response is ok, or data ok, or error is nil -> continue (line 38)
                 guard let response = response,
                     let data = data,
-                    error == nil else { // otherwise do else statement (lines 34-36)
-                        print(String(describing: error))
+                    error == nil else {
+                        // otherwise do else statement (lines 34-36)
+                        // completionBlock(nil, error)
                         return
                 }
                 
                 print(response)
                 // decoding the data from JSON into login response obj
                 let loginResponse = try? JSONDecoder().decode(LoginResponse.self, from: data)
-                print(loginResponse)
+                
+                if let loginResponse = loginResponse {
+                    completionBlock(loginResponse, nil)
+                } else {
+                    let loginResponseError = try? JSONDecoder().decode(LoginResponseError.self, from: data)
+                    completionBlock(nil, loginResponseError)
+                }
             }
             
             // starting URLRequest task
