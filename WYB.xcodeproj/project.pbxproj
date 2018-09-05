@@ -15,6 +15,8 @@
 		260A2871213CE44B00FBDE8D /* WYBUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260A2870213CE44B00FBDE8D /* WYBUITests.swift */; };
 		26685A87213CF92700988B68 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26685A86213CF92700988B68 /* NetworkClient.swift */; };
 		26B032E1213CEBDF005D9CC7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B032E0213CEBDF005D9CC7 /* LoginViewController.swift */; };
+		26F9DFDA214078430035F1A5 /* RequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F9DFD9214078430035F1A5 /* RequestsViewController.swift */; };
+		26F9DFE02140791A0035F1A5 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F9DFDF2140791A0035F1A5 /* CollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		260A2872213CE44B00FBDE8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26685A86213CF92700988B68 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		26B032E0213CEBDF005D9CC7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		26F9DFD9214078430035F1A5 /* RequestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsViewController.swift; sourceTree = "<group>"; };
+		26F9DFDF2140791A0035F1A5 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +144,8 @@
 			isa = PBXGroup;
 			children = (
 				26B032E0213CEBDF005D9CC7 /* LoginViewController.swift */,
+				26F9DFD9214078430035F1A5 /* RequestsViewController.swift */,
+				26F9DFDF2140791A0035F1A5 /* CollectionViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -277,6 +283,8 @@
 			files = (
 				26B032E1213CEBDF005D9CC7 /* LoginViewController.swift in Sources */,
 				260A2851213CE44800FBDE8D /* AppDelegate.swift in Sources */,
+				26F9DFE02140791A0035F1A5 /* CollectionViewCell.swift in Sources */,
+				26F9DFDA214078430035F1A5 /* RequestsViewController.swift in Sources */,
 				26685A87213CF92700988B68 /* NetworkClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
