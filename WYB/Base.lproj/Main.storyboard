@@ -83,10 +83,10 @@
             </objects>
             <point key="canvasLocation" x="32.799999999999997" y="70.614692653673174"/>
         </scene>
-        <!--View Controller-->
+        <!--Requests View Controller-->
         <scene sceneID="ks3-db-WTr">
             <objects>
-                <viewController id="SN3-ri-JoS" sceneMemberID="viewController">
+                <viewController id="SN3-ri-JoS" customClass="RequestsViewController" customModule="WYB" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZGm-45-F9a">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -137,6 +137,12 @@
                                             </subviews>
                                         </view>
                                         <size key="customSize" width="349" height="250"/>
+                                        <connections>
+                                            <outlet property="dogName" destination="b6F-vJ-FXf" id="36C-oN-zvz"/>
+                                            <outlet property="dogPhoto" destination="wnj-pr-KwO" id="Nwh-ye-ppv"/>
+                                            <outlet property="requestDate" destination="qtr-dK-zhL" id="9rV-fs-ZKT"/>
+                                            <outlet property="requestTime" destination="qtr-dK-zhL" id="uNY-va-HHX"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>

@@ -19,7 +19,7 @@ class RequestsViewController: UIViewController, UICollectionViewDataSource, UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("requests view controller")
+        print("requests view controller did load")
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -27,6 +27,13 @@ class RequestsViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
+        let cell: CollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CollectionViewCell
+        
+        cell.dogPhoto.image = dogPhoto[indexPath.row]
+        cell.dogName.text = dogName[indexPath.row]
+        cell.requestDate.text = dates[indexPath.row]
+        cell.requestTime.text = times[indexPath.row]
+
+        return cell
     }
 }
