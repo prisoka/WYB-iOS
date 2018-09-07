@@ -7,6 +7,7 @@ target 'WYB' do
 
   # Pods for WYB
   pod 'Alamofire', '~> 4.7'
+  pod 'Kingfisher', '~> 4.9'
 
   target 'WYBTests' do
     inherit! :search_paths

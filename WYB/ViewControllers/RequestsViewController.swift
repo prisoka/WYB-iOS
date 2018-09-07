@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class RequestsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
@@ -52,8 +53,13 @@ class RequestsViewController: UIViewController, UICollectionViewDataSource, UICo
         
         let request = requests[indexPath.row]
         
-//        cell.dogPhoto.image = request.dogPhotoUrl
-        cell.dogName.text = "Dog Name: " + request.dogName
+        // using Kingfish to load image from URL async
+        if let urlString = request.dogPhotoUrl,
+            let url = URL(string: urlString) {
+            cell.dogPhoto.kf.setImage(with: url)
+        }
+        
+        cell.dogName.text = "Dog: " + request.dogName
         cell.requestDate.text = "Date: " + request.requestDateString
         cell.requestTime.text = "Time: " + request.requestTimeString
         
