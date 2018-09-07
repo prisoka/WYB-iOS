@@ -12,6 +12,7 @@ class RequestsViewController: UIViewController, UICollectionViewDataSource, UICo
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    let networkClient = NetworkClient()
     
     let dogName = ["Aquila", "Flora", "Happy", "Peanut Butter"]
     
@@ -27,6 +28,9 @@ class RequestsViewController: UIViewController, UICollectionViewDataSource, UICo
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        networkClient.fetchAllRequests(completionBlock: { (requests, error) in
+            
+        })
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

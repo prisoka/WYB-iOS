@@ -46,6 +46,33 @@ enum UserType: String, Codable {
     case walker
 }
 
+struct WalkRequest: Codable {
+    let userName: String
+    let addressOne: String
+    let addressTwo: String
+    let zip: Int
+    let dogName: String
+    let dogPhotoUrl: String
+    let id: Int
+    let requestDate: Date
+    let requestTime: Date
+    let walkerId: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case userName = "first_name"
+        case addressOne = "address_one"
+        case addressTwo = "address_two"
+        case zip = "zip"
+        case dogName = "dog_name"
+        case dogPhotoUrl = "dog_photo_url"
+        case id = "id"
+        case requestDate = "request_date"
+        case requestTime = "request_time"
+        case walkerId = "walker_id"
+
+    }
+}
+
 // create a class for handling all Network Req to the server
 class NetworkClient {
     // storing the API URL in a constant
@@ -99,7 +126,19 @@ class NetworkClient {
         }
     }
     
-    func fetchAllRequests() {
-        
+    func fetchAllRequests(completionBlock: ([WalkRequest], Error) -> Void) {
+        Alamofire.request(apiUrl+"users", method: .get).responseJSON { response in
+            print("Request: \(String(describing: response.request))")   // original url request
+            print("Response: \(String(describing: response.response))") // http url response
+            print("Result: \(response.result)")                         // response serialization result
+            
+            if let json = response.result.value {
+                print("JSON: \(json)") // serialized json response
+            }
+            
+            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+                print("Data: \(utf8Text)") // original server data as UTF8 string
+            }
+        }
     }
 }
