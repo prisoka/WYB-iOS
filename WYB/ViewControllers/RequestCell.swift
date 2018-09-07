@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CollectionViewCell: UICollectionViewCell {
+class RequestCell: UICollectionViewCell {
     
     @IBOutlet weak var dogPhoto: UIImageView!
     @IBOutlet weak var dogName: UILabel!

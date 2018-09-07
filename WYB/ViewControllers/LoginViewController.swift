@@ -22,8 +22,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(red: 0, green: 209, blue: 178, alpha: 1)
-        
         activityIndicator.isHidden = true
         emailTextField.delegate = self
         passwordTextField.delegate = self

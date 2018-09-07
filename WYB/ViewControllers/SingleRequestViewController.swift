@@ -9,6 +9,10 @@
 import UIKit
 
 class SingleRequestViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    
     let dogName = ["Aquila", "Flora", "Happy", "Peanut Butter"]
     
     let dogPhoto = [UIImage(named: "Aquila"), UIImage(named: "Flora"), UIImage(named: "Happy"), UIImage(named: "PeanutButter")]
@@ -25,14 +29,17 @@ class SingleRequestViewController: UIViewController, UICollectionViewDataSource,
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Single Request View Controller DidLoad")
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dogName.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "requestCard", for: indexPath) as! SingleRequestCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "requestCardDetails", for: indexPath) as! SingleRequestCollectionViewCell
         
         cell.dogPhoto.image = dogPhoto[indexPath.row]
         cell.dogName.text = dogName[indexPath.row]
