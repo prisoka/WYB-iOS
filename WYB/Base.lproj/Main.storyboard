@@ -70,7 +70,6 @@
                                         </state>
                                         <connections>
                                             <action selector="loginButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="auG-s3-JBJ"/>
-                                            <segue destination="tP4-i3-Ntl" kind="show" id="6Zn-C7-W00"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -85,6 +84,7 @@
                         <outlet property="emailTextField" destination="JcX-Mr-mJM" id="grz-EI-Mf3"/>
                         <outlet property="loginButton" destination="nK6-1Y-pyH" id="LG1-Aw-6U8"/>
                         <outlet property="passwordTextField" destination="3Fj-Fz-I8c" id="PzZ-dw-G7y"/>
+                        <segue destination="tP4-i3-Ntl" kind="show" identifier="LoggedInSegue" id="Fq7-8k-Yon"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

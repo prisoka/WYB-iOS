@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 // Struct: data structure that holds email and password.
 // It's a req obj that holds the data I am sending in the http body to the server
@@ -96,5 +97,9 @@ class NetworkClient {
             // starting URLRequest task
             dataTask.resume()
         }
+    }
+    
+    func fetchAllRequests() {
+        
     }
 }

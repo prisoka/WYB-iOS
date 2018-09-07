@@ -26,6 +26,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         
+        emailTextField.text = "walker@gmail.com"
+        passwordTextField.text = "priscilla"
+        
         print("login view controller")
         // Do any additional setup after loading the view.
     }
@@ -55,6 +58,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     self.displayAlert(message: error.error.message)
                 } else {
                     //Do something with loginResponse here
+                    self.performSegue(withIdentifier: "LoggedInSegue", sender: self)
                 }
             }
         })
