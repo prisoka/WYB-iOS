@@ -18,7 +18,7 @@ class RequestsViewController: UIViewController, UICollectionViewDataSource, UICo
     let dogPhoto = [UIImage(named: "Aquila"), UIImage(named: "Flora"), UIImage(named: "Happy"), UIImage(named: "PeanutButter")]
     
     let dates = ["09/05/2018", "09/06/2018", "09/07/2018", "09/08/2018"]
-    
+
     let times = ["06:00 AM", "09:30 AM", "06:45 PM", "11:11 AM"]
     
     override func viewDidLoad() {
@@ -37,9 +37,12 @@ class RequestsViewController: UIViewController, UICollectionViewDataSource, UICo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "requestCardCell", for: indexPath) as! RequestCell
         
         cell.dogPhoto.image = dogPhoto[indexPath.row]
-        cell.dogName.text = dogName[indexPath.row]
-        cell.requestDate.text = dates[indexPath.row]
-        cell.requestTime.text = times[indexPath.row]
+        cell.dogName.text = "Dog Name: " + dogName[indexPath.row]
+        cell.requestDate.text = "Date: " + dates[indexPath.row]
+        cell.requestTime.text = "Time: " + times[indexPath.row]
+        
+        cell.layer.borderWidth = 2
+        cell.layer.borderColor = UIColor(red: 0, green: 209, blue: 178, alpha: 1).cgColor
 
         return cell
     }

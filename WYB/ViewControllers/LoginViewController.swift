@@ -21,7 +21,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         activityIndicator.isHidden = true
         emailTextField.delegate = self
         passwordTextField.delegate = self

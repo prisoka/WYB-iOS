@@ -24,7 +24,7 @@ class SingleRequestViewController: UIViewController, UICollectionViewDataSource,
     let times = ["06:00 AM", "09:30 AM", "06:45 PM", "11:11 AM"]
 
     
-    let location = ["test", "test 2", "test 3", "test 4"]
+    let locations = ["test", "test 2", "test 3", "test 4"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,11 +42,15 @@ class SingleRequestViewController: UIViewController, UICollectionViewDataSource,
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "requestCardDetails", for: indexPath) as! SingleRequestCollectionViewCell
         
         cell.dogPhoto.image = dogPhoto[indexPath.row]
-        cell.dogName.text = dogName[indexPath.row]
-        cell.ownerName.text = ownerName[indexPath.row]
-        cell.date.text = dates[indexPath.row]
-        cell.time.text = times[indexPath.row]
-        cell.location.text = dates[indexPath.row]
+        cell.dogName.text = "Dog: " + dogName[indexPath.row]
+        cell.ownerName.text = "Owner: " + ownerName[indexPath.row]
+        cell.date.text = "Date: " + dates[indexPath.row]
+        cell.time.text = "Time: " + times[indexPath.row]
+        cell.location.text = "Pick up: " + locations[indexPath.row]
+        
+        cell.layer.borderWidth = 2
+        cell.layer.borderColor = UIColor(red: 0, green: 209, blue: 178, alpha: 1).cgColor
+
         
         return cell
     }

@@ -18,5 +18,4 @@ class SingleRequestCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var location: UILabel!
     @IBOutlet weak var acceptBtn: UIButton!
     @IBOutlet weak var declineBtn: UIButton!
-    @IBOutlet weak var contactOwnerBtn: UIButton!
 }
