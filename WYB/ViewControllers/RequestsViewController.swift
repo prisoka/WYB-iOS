@@ -12,15 +12,10 @@ class RequestsViewController: UIViewController, UICollectionViewDataSource, UICo
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    // this is how I instantiate the Object that lives in Model > NetworkClient.swift. I can use this anywhere inside RequestsViewController class
     let networkClient = NetworkClient()
     
-    let dogName = ["Aquila", "Flora", "Happy", "Peanut Butter"]
-    
-    let dogPhoto = [UIImage(named: "Aquila"), UIImage(named: "Flora"), UIImage(named: "Happy"), UIImage(named: "PeanutButter")]
-    
-    let dates = ["09/05/2018", "09/06/2018", "09/07/2018", "09/08/2018"]
-
-    let times = ["06:00 AM", "09:30 AM", "06:45 PM", "11:11 AM"]
+    var requests = [WalkRequest]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,22 +24,40 @@ class RequestsViewController: UIViewController, UICollectionViewDataSource, UICo
         collectionView.delegate = self
         collectionView.dataSource = self
         networkClient.fetchAllRequests(completionBlock: { (requests, error) in
-            
+            if let error = error {
+                self.displayAlert(message: error.localizedDescription)
+            } else if let requests = requests {
+                //Do something with requestsResponse here
+                self.requests = requests
+                self.collectionView.reloadData()
+            }
         })
     }
     
+    // instantiating and presenting alert box
+    private func displayAlert(message: String) {
+        let alertController = UIAlertController(title: message, message: nil, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(alertAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dogName.count
+        return requests.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "requestCardCell", for: indexPath) as! RequestCell
         
-        cell.dogPhoto.image = dogPhoto[indexPath.row]
-        cell.dogName.text = "Dog Name: " + dogName[indexPath.row]
-        cell.requestDate.text = "Date: " + dates[indexPath.row]
-        cell.requestTime.text = "Time: " + times[indexPath.row]
+        let request = requests[indexPath.row]
         
+//        cell.dogPhoto.image = request.dogPhotoUrl
+        cell.dogName.text = "Dog Name: " + request.dogName
+        cell.requestDate.text = "Date: " + request.requestDateString
+        cell.requestTime.text = "Time: " + request.requestTimeString
+        
+        cell.layer.cornerRadius = 10
         cell.layer.borderWidth = 2
         cell.layer.borderColor = UIColor(red: 0, green: 209, blue: 178, alpha: 1).cgColor
 

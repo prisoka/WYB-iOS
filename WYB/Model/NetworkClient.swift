@@ -32,11 +32,11 @@ struct LoginResponse: Codable {
     let user_type: UserType
 }
 
-struct LoginResponseError: Codable {
-    let error: LoginErrorMessage
+struct NetworkResponseError: Codable {
+    let error: NetworkErrorMessage
 }
 
-struct LoginErrorMessage: Codable {
+struct NetworkErrorMessage: Codable {
     let message: String
 }
 
@@ -49,14 +49,14 @@ enum UserType: String, Codable {
 struct WalkRequest: Codable {
     let userName: String
     let addressOne: String
-    let addressTwo: String
+    let addressTwo: String?
     let zip: Int
     let dogName: String
-    let dogPhotoUrl: String
+    let dogPhotoUrl: String?
     let id: Int
-    let requestDate: Date
-    let requestTime: Date
-    let walkerId: Int
+    let requestDateString: String
+    let requestTimeString: String
+    let walkerId: Int?
     
     enum CodingKeys: String, CodingKey {
         case userName = "first_name"
@@ -66,10 +66,9 @@ struct WalkRequest: Codable {
         case dogName = "dog_name"
         case dogPhotoUrl = "dog_photo_url"
         case id = "id"
-        case requestDate = "request_date"
-        case requestTime = "request_time"
+        case requestDateString = "request_date"
+        case requestTimeString = "request_time"
         case walkerId = "walker_id"
-
     }
 }
 
@@ -79,7 +78,7 @@ class NetworkClient {
     let apiUrl = "https://wyb-api.herokuapp.com/api/"
     
     // func for sending http req to login end point, and hande response
-    func login(email: String, password: String, completionBlock: @escaping (LoginResponse?, LoginResponseError?) -> Void) {
+    func login(email: String, password: String, completionBlock: @escaping (LoginResponse?, NetworkResponseError?) -> Void) {
         
         // storing the email and password in the LoginRequest obj
         let loginRequest = LoginRequest(email: email, password: password)
@@ -116,7 +115,7 @@ class NetworkClient {
                 if let loginResponse = loginResponse {
                     completionBlock(loginResponse, nil)
                 } else {
-                    let loginResponseError = try? JSONDecoder().decode(LoginResponseError.self, from: data)
+                    let loginResponseError = try? JSONDecoder().decode(NetworkResponseError.self, from: data)
                     completionBlock(nil, loginResponseError)
                 }
             }
@@ -126,11 +125,22 @@ class NetworkClient {
         }
     }
     
-    func fetchAllRequests(completionBlock: ([WalkRequest], Error) -> Void) {
-        Alamofire.request(apiUrl+"users", method: .get).responseJSON { response in
+    func fetchAllRequests(completionBlock: @escaping ([WalkRequest]?, Error?) -> Void) {
+        Alamofire.request(apiUrl+"requests", method: .get, headers: nil).responseData { response in
             print("Request: \(String(describing: response.request))")   // original url request
             print("Response: \(String(describing: response.response))") // http url response
             print("Result: \(response.result)")                         // response serialization result
+            let decoder = JSONDecoder()
+            let decodedResponse: Result<[WalkRequest]> = decoder.decodeResponse(from: response)
+
+            switch decodedResponse {
+                case .success(let walkRequests):
+                    print("JSON: \(walkRequests)")
+                    completionBlock(walkRequests, nil)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    completionBlock(nil, error)
+            }
             
             if let json = response.result.value {
                 print("JSON: \(json)") // serialized json response

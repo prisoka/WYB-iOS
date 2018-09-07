@@ -12,7 +12,6 @@ class SingleRequestViewController: UIViewController, UICollectionViewDataSource,
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    
     let dogName = ["Aquila", "Flora", "Happy", "Peanut Butter"]
     
     let dogPhoto = [UIImage(named: "Aquila"), UIImage(named: "Flora"), UIImage(named: "Happy"), UIImage(named: "PeanutButter")]
@@ -48,6 +47,7 @@ class SingleRequestViewController: UIViewController, UICollectionViewDataSource,
         cell.time.text = "Time: " + times[indexPath.row]
         cell.location.text = "Pick up: " + locations[indexPath.row]
         
+        cell.layer.cornerRadius = 10
         cell.layer.borderWidth = 2
         cell.layer.borderColor = UIColor(red: 0, green: 209, blue: 178, alpha: 1).cgColor
 
