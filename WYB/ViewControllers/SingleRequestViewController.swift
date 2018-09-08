@@ -9,31 +9,30 @@
 import UIKit
 import Kingfisher
 
-class SingleRequestViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class SingleRequestViewController: UIViewController {
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var dogPhoto: UIImageView!
+    @IBOutlet weak var dogName: UILabel!
+    @IBOutlet weak var ownerName: UILabel!
+    @IBOutlet weak var date: UILabel!
+    @IBOutlet weak var time: UILabel!
+    @IBOutlet weak var location: UILabel!
+    @IBOutlet weak var acceptBtn: UIButton!
+    @IBOutlet weak var declineBtn: UIButton!
+    @IBOutlet weak var singleCardView: UIView!
     
     // this is how I instantiate the Object that lives in Model > NetworkClient.swift. I can use this anywhere inside RequestsViewController class
     let networkClient = NetworkClient()
     
-    var requests = [WalkRequest]()
-
+    var request: WalkRequest?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Single Request View Controller DidLoad")
         
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        
-        networkClient.fetchAllRequests(completionBlock: { (requests, error) in
-            if let error = error {
-                self.displayAlert(message: error.localizedDescription)
-            } else if let requests = requests {
-                //Do something with requestsResponse here
-                self.requests = requests
-                self.collectionView.reloadData()
-            }
-        })
+        if let request = request {
+            setRequest(request: request)
+        }
     }
     
     // instantiating and presenting alert box
@@ -44,35 +43,25 @@ class SingleRequestViewController: UIViewController, UICollectionViewDataSource,
         present(alertController, animated: true, completion: nil)
     }
     
-    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return requests.count
-//        return request != nil ? 1 : 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "requestCardDetails", for: indexPath) as! SingleRequestCollectionViewCell
+    func setRequest(request: WalkRequest) {
+        self.request = request
         
-        let request = requests[indexPath.row]
-        print(request)
-
-//        if let request = request {
+        if let request = self.request {
             // using Kingfish to load image from URL async
             if let urlString = request.dogPhotoUrl,
                 let url = URL(string: urlString) {
-                cell.dogPhoto.kf.setImage(with: url)
+                dogPhoto.kf.setImage(with: url)
             }
             
-            cell.dogName.text = "Dog: " + request.dogName
-            cell.ownerName.text = "Owner: " + request.userName
-            cell.date.text = "Date: " + request.requestDateString
-            cell.time.text = "Time: " + request.requestTimeString
-            cell.location.text = "Pick up at: " + request.addressOne
-
-            cell.layer.cornerRadius = 10
-            cell.layer.borderWidth = 2
-            cell.layer.borderColor = UIColor(red: 0, green: 209, blue: 178, alpha: 1).cgColor
-//        }
-        
-        return cell
+            dogName.text = "Dog: " + request.dogName
+            ownerName.text = "Owner: " + request.userName
+            date.text = "Date: " + request.requestDateString
+            time.text = "Time: " + request.requestTimeString
+            location.text = "Pick up at: " + request.addressOne + ", " + (request.addressTwo ?? "")
+            
+            singleCardView.layer.cornerRadius = 10
+            singleCardView.layer.borderWidth = 2
+            singleCardView.layer.borderColor = UIColor(red: 0, green: 209, blue: 178, alpha: 1).cgColor
+        }
     }
 }

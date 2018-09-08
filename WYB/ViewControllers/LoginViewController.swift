@@ -51,18 +51,22 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             print("login success")
             
             let userDetails = loginResponse
-            let userType = userDetails?.user_type
-//            print(userType)
+//            let userType = userDetails?.user_type
+            // print(userType)
             
-            let user = UserType(rawValue: "user")
+//            let user = UserType(rawValue: "user")
             
             DispatchQueue.main.async {
                 self.activityIndicator.isHidden = true
                 self.activityIndicator.stopAnimating()
 
-                if case userType = user {
+                if userDetails?.user_type == UserType.user {
                     self.displayAlert(message: "Sorry, this app is only available for WYB walkers")
                 }
+                
+//                if case userType = user {
+//                    self.displayAlert(message: "Sorry, this app is only available for WYB walkers")
+//                }
                 
                 if let error = error {
                     self.displayAlert(message: error.error.message)

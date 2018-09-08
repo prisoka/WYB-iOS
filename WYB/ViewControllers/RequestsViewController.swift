@@ -18,6 +18,8 @@ class RequestsViewController: UIViewController, UICollectionViewDataSource, UICo
     
     var requests = [WalkRequest]()
     
+    var selectedRequest: WalkRequest?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("requests view controller did load")
@@ -68,5 +70,18 @@ class RequestsViewController: UIViewController, UICollectionViewDataSource, UICo
         cell.layer.borderColor = UIColor(red: 0, green: 209, blue: 178, alpha: 1).cgColor
 
         return cell
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedRequest = requests[indexPath.row]
+        performSegue(withIdentifier: "RequestDetailsSegue", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let selectedRequest = selectedRequest,
+            segue.identifier == "RequestDetailsSegue",
+            let requestDetailsViewController = segue.destination as? SingleRequestViewController {
+            requestDetailsViewController.request = selectedRequest
+        }
     }
 }

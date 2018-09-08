@@ -151,4 +151,31 @@ class NetworkClient {
             }
         }
     }
+    
+    func fetchOneRequest(requestId: Int, completionBlock: @escaping ([WalkRequest]?, Error?) -> Void) {
+        Alamofire.request(apiUrl+"requests/"+"\(requestId)", method: .get, headers: nil).responseData { response in
+            print("Request: \(String(describing: response.request))")   // original url request
+            print("Response: \(String(describing: response.response))") // http url response
+            print("Result: \(response.result)")                         // response serialization result
+            let decoder = JSONDecoder()
+            let decodedResponse: Result<[WalkRequest]> = decoder.decodeResponse(from: response)
+            
+            switch decodedResponse {
+            case .success(let walkRequest):
+                print("JSON: \(walkRequest)")
+                completionBlock(walkRequest, nil)
+            case .failure(let error):
+                print(error.localizedDescription)
+                completionBlock(nil, error)
+            }
+            
+            if let json = response.result.value {
+                print("JSON: \(json)") // serialized json response
+            }
+            
+            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+                print("Data: \(utf8Text)") // original server data as UTF8 string
+            }
+        }
+    }
 }
