@@ -19,7 +19,11 @@ class SingleRequestViewController: UIViewController {
     @IBOutlet weak var location: UILabel!
     @IBOutlet weak var acceptBtn: UIButton!
     @IBOutlet weak var declineBtn: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var singleCardView: UIView!
+    @IBOutlet weak var btnsView: UIView!
+    
+    
     
     // this is how I instantiate the Object that lives in Model > NetworkClient.swift. I can use this anywhere inside RequestsViewController class
     let networkClient = NetworkClient()
@@ -62,6 +66,31 @@ class SingleRequestViewController: UIViewController {
             singleCardView.layer.cornerRadius = 10
             singleCardView.layer.borderWidth = 2
             singleCardView.layer.borderColor = UIColor(red: 0, green: 209, blue: 178, alpha: 1).cgColor
+            
+            btnsView.isHidden = request.walkerId != nil
         }
+    }
+    
+    @IBAction func acceptBtnTapped(_ sender: Any) {
+        if let request = request {
+            activityIndicator.isHidden = false
+            activityIndicator.startAnimating()
+            
+            networkClient.updateOneRequest(request: request, completionBlock: {_,_ in 
+                self.activityIndicator.isHidden = true
+                self.activityIndicator.stopAnimating()
+                
+            })
+        }
+    }
+    
+    
+    @IBAction func declineBtnTapped(_ sender: Any) {
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+        
+//        networkClient.declineRequest(request, completionBlock: {
+//
+//        })
     }
 }

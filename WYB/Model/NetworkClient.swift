@@ -72,8 +72,11 @@ struct WalkRequest: Codable {
     }
 }
 
+var userId: Int?
+
 // create a class for handling all Network Req to the server
 class NetworkClient {
+    
     // storing the API URL in a constant
     let apiUrl = "https://wyb-api.herokuapp.com/api/"
     
@@ -113,6 +116,7 @@ class NetworkClient {
                 let loginResponse = try? JSONDecoder().decode(LoginResponse.self, from: data)
                 
                 if let loginResponse = loginResponse {
+                    userId = loginResponse.user_id
                     completionBlock(loginResponse, nil)
                 } else {
                     let loginResponseError = try? JSONDecoder().decode(NetworkResponseError.self, from: data)
@@ -175,6 +179,43 @@ class NetworkClient {
             
             if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
                 print("Data: \(utf8Text)") // original server data as UTF8 string
+            }
+        }
+    }
+    
+    func updateOneRequest(request: WalkRequest, completionBlock: @escaping (WalkRequest?, Error?) -> Void) {
+        let encoder = JSONEncoder()
+        let data = try? encoder.encode(request)
+        
+        if let url = URL(string: apiUrl+"requests/"+"\(request.id)") {
+            var request = URLRequest(url: url)
+            request.httpMethod = HTTPMethod.put.rawValue
+            request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
+            request.httpBody = data
+            
+            Alamofire.request(request).responseData { response in
+                print("Request: \(String(describing: response.request))")   // original url request
+                print("Response: \(String(describing: response.response))") // http url response
+                print("Result: \(response.result)")                         // response serialization result
+                let decoder = JSONDecoder()
+                let decodedResponse: Result<WalkRequest> = decoder.decodeResponse(from: response)
+                
+                switch decodedResponse {
+                case .success(let walkRequest):
+                    print("JSON: \(walkRequest)")
+                    completionBlock(walkRequest, nil)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    completionBlock(nil, error)
+                }
+                
+                if let json = response.result.value {
+                    print("JSON: \(json)") // serialized json response
+                }
+                
+                if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+                    print("Data: \(utf8Text)") // original server data as UTF8 string
+                }
             }
         }
     }

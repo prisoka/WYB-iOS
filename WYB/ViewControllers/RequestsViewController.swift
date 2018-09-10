@@ -23,16 +23,23 @@ class RequestsViewController: UIViewController, UICollectionViewDataSource, UICo
     override func viewDidLoad() {
         super.viewDidLoad()
         print("requests view controller did load")
-        
         collectionView.delegate = self
         collectionView.dataSource = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         networkClient.fetchAllRequests(completionBlock: { (requests, error) in
             if let error = error {
                 self.displayAlert(message: error.localizedDescription)
             } else if let requests = requests {
-                //Do something with requestsResponse here
-                self.requests = requests
+                let filteredRequests = requests.filter({ (request) -> Bool in
+                    request.walkerId == nil
+                })
+                self.requests = filteredRequests
                 self.collectionView.reloadData()
+                
             }
         })
     }
