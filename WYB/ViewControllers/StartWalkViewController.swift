@@ -5,9 +5,7 @@
 //  Created by Priscilla Okawa on 10/9/18.
 //  Copyright © 2018 Priscilla Okawa. All rights reserved.
 //
-
 import UIKit
-
 class StartWalkViewController: UIViewController {
     
     @IBOutlet weak var dogPhoto: UIImageView!
@@ -20,10 +18,11 @@ class StartWalkViewController: UIViewController {
     @IBOutlet weak var contactOwnerBtn: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var startWalkCardView: UIView!
+
+    
     let networkClient = NetworkClient()
     
     var request: WalkRequest?
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,7 +32,7 @@ class StartWalkViewController: UIViewController {
             setRequest(request: request)
         }
     }
-
+    
     func setRequest(request: WalkRequest) {
         self.request = request
         
@@ -53,6 +52,6 @@ class StartWalkViewController: UIViewController {
             startWalkCardView.layer.cornerRadius = 10
             startWalkCardView.layer.borderWidth = 2
             startWalkCardView.layer.borderColor = UIColor(red: 0, green: 209, blue: 178, alpha: 1).cgColor
-                    }
+        }
     }
 }

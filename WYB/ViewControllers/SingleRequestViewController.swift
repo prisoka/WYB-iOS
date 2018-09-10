@@ -23,8 +23,6 @@ class SingleRequestViewController: UIViewController {
     @IBOutlet weak var singleCardView: UIView!
     @IBOutlet weak var btnsView: UIView!
     
-    
-    
     // this is how I instantiate the Object that lives in Model > NetworkClient.swift. I can use this anywhere inside RequestsViewController class
     let networkClient = NetworkClient()
     
