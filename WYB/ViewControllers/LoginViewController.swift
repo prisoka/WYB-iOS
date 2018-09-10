@@ -23,8 +23,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         print("login view controller")
         
-        // Do any additional setup after loading the view.
-                
         activityIndicator.isHidden = true
         emailTextField.delegate = self
         passwordTextField.delegate = self

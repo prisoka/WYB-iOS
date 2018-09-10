@@ -319,19 +319,20 @@
                                                 <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </activityIndicatorView>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ppn-sS-MWq">
-                                                <rect key="frame" x="22" y="10" width="238" height="48"/>
+                                                <rect key="frame" x="22" y="29" width="238" height="48"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                 <inset key="contentEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
-                                                <state key="normal" title="  Start Walking" image="icons8-cat-footprint-50">
+                                                <state key="normal" title="  Start Walking" image="icons8-cat-footprint-filled-50">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="acceptBtnTapped:" destination="6Hq-VB-5fG" eventType="touchUpInside" id="mq1-Vk-7Sr"/>
+                                                    <segue destination="y9f-z7-YJo" kind="show" identifier="startWalkMapSegue" id="SuF-wD-rqO"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Jm-Ux-oZA">
-                                                <rect key="frame" x="29" y="59" width="238" height="48"/>
+                                                <rect key="frame" x="29" y="68" width="238" height="48"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                                 <inset key="contentEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
@@ -367,7 +368,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="location" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f36-F4-oK1">
-                                        <rect key="frame" x="39" y="287" width="235" height="21"/>
+                                        <rect key="frame" x="39" y="287" width="235" height="58"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -398,7 +399,6 @@
                         <outlet property="ownerName" destination="74i-6E-uwS" id="dfa-CN-28f"/>
                         <outlet property="startWalkBtn" destination="ppn-sS-MWq" id="QO8-g3-6kt"/>
                         <outlet property="time" destination="vbl-Py-quO" id="Jod-aU-L6J"/>
-                        <segue destination="y9f-z7-YJo" kind="show" id="wGm-v8-YGI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h7d-jt-0RK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -412,13 +412,33 @@
                     <view key="view" contentMode="scaleToFill" id="WAX-o7-aoX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="pYL-fY-U6v">
+                                <rect key="frame" x="0.0" y="64" width="375" height="423"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CdQ-Ru-eQk">
+                                <rect key="frame" x="104" y="511" width="168" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="   Walker Location" image="icons8-marker-filled-50">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="po2-TB-cfk">
+                                <rect key="frame" x="104" y="548" width="135" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="   Finish Walk" image="icons8-realtime-50">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="2iz-jz-Yhc"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qh9-tB-1Qi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4786" y="-638"/>
+            <point key="canvasLocation" x="4784.8000000000002" y="-638.2308845577212"/>
         </scene>
         <!--My Walks-->
         <scene sceneID="WcS-we-2Qt">
@@ -509,7 +529,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="location" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gn-pE-0Bh">
-                                        <rect key="frame" x="39" y="287" width="235" height="21"/>
+                                        <rect key="frame" x="39" y="287" width="235" height="55"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -664,18 +684,34 @@
             </objects>
             <point key="canvasLocation" x="885.60000000000002" y="70.614692653673174"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="qMh-if-nzW">
+            <objects>
+                <viewController id="atf-Ig-JN4" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eP1-oK-anJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="XoD-Wa-zoQ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2h3-R8-hMO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
     </scenes>
     <resources>
         <image name="icons8-admin-settings-male-50" width="25" height="25"/>
         <image name="icons8-calendar-51" width="25" height="25"/>
         <image name="icons8-cancel-48" width="24" height="24"/>
-        <image name="icons8-cat-footprint-50" width="25" height="25"/>
+        <image name="icons8-cat-footprint-filled-50" width="25" height="25"/>
         <image name="icons8-checked-48" width="24" height="24"/>
         <image name="icons8-exit-50" width="25" height="25"/>
         <image name="icons8-gears-50" width="25" height="25"/>
         <image name="icons8-hand-50" width="25" height="25"/>
         <image name="icons8-help-50" width="25" height="25"/>
+        <image name="icons8-marker-filled-50" width="25" height="25"/>
         <image name="icons8-phone-50 (1)" width="25" height="25"/>
+        <image name="icons8-realtime-50" width="25" height="25"/>
         <image name="icons8-today-51" width="25" height="25"/>
     </resources>
 </document>
