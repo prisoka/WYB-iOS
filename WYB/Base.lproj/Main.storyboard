@@ -420,32 +420,28 @@
                                     <action selector="walkerLocation:" destination="y9f-z7-YJo" eventType="touchUpInside" id="hSr-Rb-UYy"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="po2-TB-cfk">
-                                <rect key="frame" x="16" y="528" width="135" height="38"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="38" id="aIv-8h-dnC"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5A-sF-Ewf">
+                                <rect key="frame" x="55" y="513" width="304" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="po2-TB-cfk">
+                                <rect key="frame" x="16" y="565" width="135" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <state key="normal" title="   Finish Walk" image="icons8-realtime-50">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5A-sF-Ewf">
-                                <rect key="frame" x="16" y="574" width="343" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="j4w-Rb-noc"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="2iz-jz-Yhc"/>
                     </view>
                     <connections>
-                        <outlet property="addressLabel" destination="s5A-sF-Ewf" id="fr5-jN-nC3"/>
-                        <outlet property="finishWalkBtn" destination="po2-TB-cfk" id="0fe-RB-Xue"/>
+                        <outlet property="addressLabel" destination="s5A-sF-Ewf" id="1vy-iB-Pkv"/>
+                        <outlet property="finishWalkBtn" destination="po2-TB-cfk" id="Z1W-s1-pnv"/>
                         <outlet property="mapView" destination="pYL-fY-U6v" id="B3f-cL-tjH"/>
                         <outlet property="walkerLocation" destination="CdQ-Ru-eQk" id="sLD-y6-0FO"/>
                     </connections>

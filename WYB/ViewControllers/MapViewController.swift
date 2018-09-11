@@ -44,6 +44,28 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         let region = MKCoordinateRegion(center: center!, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         //set the last view to this region using the built-in set region function:
         self.mapView.setRegion(region, animated: true)
+        
+        //add an annotation with NK point built-in to se where exactly is the user at:
+        let annotation = MKPointAnnotation()
+        //set the annotation coordinate to the walker's coordinate
+        annotation.coordinate = (currentLocation?.coordinate)!
+        //set the title to Walker Location
+        annotation.title = "Walker's location"
+        //add this annotation to the MapView
+        self.mapView.addAnnotation(annotation)
+        
+        //update the walker's address using geo coder
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(currentLocation!) { (placemarks, error) in
+            if (error) == nil {
+                let placemark = placemarks![0] as? CLPlacemark
+                let address = "\(placemark?.thoroughfare ?? ""), \(placemark?.locality ?? ""), \(placemark?.subLocality ?? ""), \(placemark?.administrativeArea ?? ""), \(placemark?.postalCode ?? ""), \(placemark?.country ?? "")"
+                print("\(address)")
+                
+                self.addressLabel.text = address
+            }
+        }
+        
     }
 
     // ask permission to "walker" to get the location:
