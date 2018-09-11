@@ -22,6 +22,7 @@
 		26B1AFFE2142432B00AF86AD /* Date+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B1AFFD2142432B00AF86AD /* Date+Additions.swift */; };
 		26B1B0002146DE6300AF86AD /* StartWalkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B1AFFF2146DE6200AF86AD /* StartWalkViewController.swift */; };
 		26B1B0022146EF8400AF86AD /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B1B0012146EF8400AF86AD /* MapViewController.swift */; };
+		26B1B00421483EA100AF86AD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B1B00321483EA000AF86AD /* MapKit.framework */; };
 		26F9DFDA214078430035F1A5 /* RequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F9DFD9214078430035F1A5 /* RequestsViewController.swift */; };
 		26F9DFE02140791A0035F1A5 /* RequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F9DFDF2140791A0035F1A5 /* RequestCell.swift */; };
 		6339A050C82359C9F975852E /* Pods_WYBUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C99A1BC048FC2A10E3FF861 /* Pods_WYBUITests.framework */; };
@@ -70,6 +71,7 @@
 		26B1AFFD2142432B00AF86AD /* Date+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Additions.swift"; sourceTree = "<group>"; };
 		26B1AFFF2146DE6200AF86AD /* StartWalkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartWalkViewController.swift; sourceTree = "<group>"; };
 		26B1B0012146EF8400AF86AD /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		26B1B00321483EA000AF86AD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		26F9DFD9214078430035F1A5 /* RequestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsViewController.swift; sourceTree = "<group>"; };
 		26F9DFDF2140791A0035F1A5 /* RequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCell.swift; sourceTree = "<group>"; };
 		375C5429143B6B03962FF259 /* Pods-WYBUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WYBUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WYBUITests/Pods-WYBUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26B1B00421483EA100AF86AD /* MapKit.framework in Frameworks */,
 				F00CA1C453409F5576322DD9 /* Pods_WYB.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -191,6 +194,7 @@
 		9186D87AE09B70F6C1543B54 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				26B1B00321483EA000AF86AD /* MapKit.framework */,
 				4DABDE7F8FA9D1BADB49E746 /* Pods_WYB.framework */,
 				5F857D3E61D5B1FF5AAB6BB6 /* Pods_WYBTests.framework */,
 				1C99A1BC048FC2A10E3FF861 /* Pods_WYBUITests.framework */,

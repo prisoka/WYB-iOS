@@ -39,7 +39,6 @@ class RequestsViewController: UIViewController, UICollectionViewDataSource, UICo
                 })
                 self.requests = filteredRequests
                 self.collectionView.reloadData()
-                
             }
         })
     }
