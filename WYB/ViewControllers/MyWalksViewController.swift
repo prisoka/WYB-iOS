@@ -76,7 +76,7 @@ class MyWalksViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         cell.layer.cornerRadius = 10
         cell.layer.borderWidth = 2
-        cell.layer.borderColor = UIColor(red: 0, green: 209, blue: 178, alpha: 1).cgColor
+        cell.layer.borderColor = UIColor(red: 0/255.0, green: 209/255.0, blue: 178/255.0, alpha: 1).cgColor
         
         return cell
     }

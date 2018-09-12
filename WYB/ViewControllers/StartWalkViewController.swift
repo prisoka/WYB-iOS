@@ -51,7 +51,7 @@ class StartWalkViewController: UIViewController {
             
             startWalkCardView.layer.cornerRadius = 10
             startWalkCardView.layer.borderWidth = 2
-            startWalkCardView.layer.borderColor = UIColor(red: 0, green: 209, blue: 178, alpha: 1).cgColor
+            startWalkCardView.layer.borderColor = UIColor(red: 0/255.0, green: 209/255.0, blue: 178/255.0, alpha: 1).cgColor
         }
     }
 }

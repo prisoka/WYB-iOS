@@ -56,6 +56,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
         //drawing path or route covered
         if let oldLocationNew = oldLocation as CLLocation?{
+            currentLocation = newLocation
             let oldCoordinates = oldLocationNew.coordinate
             let newCoordinates = newLocation.coordinate
             var area = [oldCoordinates, newCoordinates]
@@ -74,19 +75,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         return nil
     }
     
-    //function to add annotation to map view
-    func addAnnotationsOnMap(locationToPoint : CLLocation){
-        
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = locationToPoint.coordinate
-        let geoCoder = CLGeocoder ()
-        geoCoder.reverseGeocodeLocation(locationToPoint, completionHandler: { (placemarks, error) -> Void in
-            if let placemarks = placemarks, placemarks.count > 0 {
-                let placemark = placemarks[0]
-                self.mapView.addAnnotation(annotation)
-            }
-        })
-    }
 
     // ask permission to "walker" to get the location:
 //    func enableLocation() {
@@ -104,6 +92,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 //            locationManager?.startUpdatingLocation()
 //        }
 //    }
+    
 //
     //setting up where to get the location from:
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

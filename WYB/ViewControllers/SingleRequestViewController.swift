@@ -63,7 +63,7 @@ class SingleRequestViewController: UIViewController {
             
             singleCardView.layer.cornerRadius = 10
             singleCardView.layer.borderWidth = 2
-            singleCardView.layer.borderColor = UIColor(red: 0, green: 209, blue: 178, alpha: 1).cgColor
+            singleCardView.layer.borderColor = UIColor(red: 0/255.0, green: 209/255.0, blue: 178/255.0, alpha: 1).cgColor
             
             btnsView.isHidden = request.walkerId != nil
         }
