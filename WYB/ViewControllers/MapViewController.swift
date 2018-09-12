@@ -50,10 +50,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapView.showsUserLocation = true
         mapView.mapType = MKMapType(rawValue: 0)!
         mapView.userTrackingMode = MKUserTrackingMode(rawValue: 2)!
-        
     }
     
+    //implement CLLocationManager delegate:
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
+
         //drawing path or route covered
         if let oldLocationNew = oldLocation as CLLocation?{
             currentLocation = newLocation
@@ -65,7 +66,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
     }
     
-    func mapView(_ mapView: MKMapView!, rendererFor overlay: MKOverlay!) -> MKOverlayRenderer! {
+    //implement MKMapView delegate:
+    private func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
         if (overlay is MKPolyline) {
             let pr = MKPolylineRenderer(overlay: overlay)
             pr.strokeColor = UIColor.red
@@ -74,51 +76,35 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
         return nil
     }
-    
 
-    // ask permission to "walker" to get the location:
-//    func enableLocation() {
-//        let status = CLLocationManager.authorizationStatus()
-//        if status == .notDetermined || status == .denied || status == .authorizedWhenInUse {
-//            // present an alert indicating location authorization required
-//            // and offer to take the user to Settings for the app via
-//            // UIApplication -openUrl: and UIApplicationOpenSettingsURLString
-//            locationManager?.requestWhenInUseAuthorization()
-//        }
-//
-//        // check if permission as given, using a built-in function:
-//        if(CLLocationManager.locationServicesEnabled()) {
-//            //start updating the location:
-//            locationManager?.startUpdatingLocation()
+    //setting up where to get the location from:
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        if let location = locations.first {
+//            currentLocation = location
 //        }
 //    }
-    
-//
-    //setting up where to get the location from:
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.first {
-            currentLocation = location
-        }
-    }
 
     @IBAction func walkerLocation(_ : Any) {
         //with the user's current location, we can get the center of the Map View
         let center = currentLocation?.coordinate
 
         //and we can set the region:
-//        let region = MKCoordinateRegion(center: center!, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-//        let regionRadius: CLLocationDistance = 1000
-//        let coordinateRegion = MKCoordinateRegionMakeWithDistance(center!, regionRadius, regionRadius)
+        let region = MKCoordinateRegion(center: center!, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        let regionRadius: CLLocationDistance = 1000
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(center!, regionRadius, regionRadius)
 
         //set the last view to this region using the built-in set region function:
-//        self.mapView.setRegion(coordinateRegion, animated: true)
+        self.mapView.setRegion(coordinateRegion, animated: true)
 
         //add an annotation with MK point built-in to se where exactly is the user at:
         let annotation = MKPointAnnotation()
+       
         //set the annotation coordinate to the walker's coordinate
         annotation.coordinate = (currentLocation?.coordinate)!
+        
         //set the title to Walker Location
         annotation.title = "Walker's location"
+        
         //add this annotation to the MapView
         self.mapView.addAnnotation(annotation)
 
