@@ -54,4 +54,14 @@ class StartWalkViewController: UIViewController {
             startWalkCardView.layer.borderColor = UIColor(red: 0/255.0, green: 209/255.0, blue: 178/255.0, alpha: 1).cgColor
         }
     }
+    
+    @IBAction func contactOwnerBtnTapped(_ sender: Any) {
+        if let request = self.request,
+            let phoneNumber = request.phoneNumber,
+            let url = URL(string: "tel:\(String(phoneNumber))") {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
+    }
 }

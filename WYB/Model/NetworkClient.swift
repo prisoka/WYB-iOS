@@ -51,6 +51,7 @@ struct WalkRequest: Codable {
     let addressOne: String
     let addressTwo: String?
     let zip: Int
+    let phoneNumber: String?
     let dogName: String
     let dogPhotoUrl: String?
     let id: Int
@@ -63,6 +64,7 @@ struct WalkRequest: Codable {
         case addressOne = "address_one"
         case addressTwo = "address_two"
         case zip = "zip"
+        case phoneNumber = "phone_number"
         case dogName = "dog_name"
         case dogPhotoUrl = "dog_photo_url"
         case id = "id"
