@@ -14,6 +14,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var finishWalkBtn: UIButton!
     @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var timerLabel: UILabel!
     
     //create a Location Manager to be able to get the current location of the user, and set the Delegate on the class to be able to control this.
     var locationManager: CLLocationManager?
@@ -24,6 +25,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     //boolean flag to call walkerLocation func 1x
     var walkerLocationLoaded = false
     
+    // variable to keep track on the timer:
+    var time = 0
+    //set timer:
+    var myTimer: Timer!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,6 +48,31 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapView.showsUserLocation = true
         mapView.mapType = MKMapType(rawValue: 0)!
         mapView.userTrackingMode = .follow
+        
+        // start the timer
+        startTimer()
+        timerLabel.layer.cornerRadius = 10
+        timerLabel.layer.masksToBounds = true
+    }
+
+    func startTimer() {
+        myTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateTime() {
+        time += 1
+        timerLabel.text = "\(timeFormatted(time))"
+    }
+    
+    func endTimer() {
+        myTimer.invalidate()
+    }
+    
+    func timeFormatted(_ totalSeconds: Int) -> String {
+        let seconds: Int = totalSeconds % 60
+        let minutes: Int = (totalSeconds / 60) % 60
+        //     let hours: Int = totalSeconds / 3600
+        return String(format: "%02d:%02d", minutes, seconds)
     }
     
     //ask permission to "walker" to get the location:
@@ -124,15 +155,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                     self.addressLabel.text = address
                 }
             }
-            
-//            //add an annotation with MK point built-in to se where exactly is the user at:
-//            let annotation = MKPointAnnotation()
-//            //set the annotation coordinate to the walker's coordinate
-//            annotation.coordinate = (location.coordinate)
-//            //set the title to Walker Location
-//            annotation.title = "Walker's location"
-//            //add this annotation to the MapView
-//            self.mapView.addAnnotation(annotation)
         }
     }
+    
+    @IBAction func finishWalkBtnTapped(_ sender: Any) {
+        endTimer()
+        mapView.showsUserLocation = false
+        locationManager?.stopUpdatingLocation()
+    }
+    
 }

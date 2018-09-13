@@ -433,7 +433,18 @@
                                 <state key="normal" title="   Finish Walk" image="icons8-realtime-50">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="finishWalkBtnTapped:" destination="y9f-z7-YJo" eventType="touchUpInside" id="Fmr-3o-jid"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZC-Vc-gLR">
+                                <rect key="frame" x="250" y="565" width="109" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.81960784310000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="2iz-jz-Yhc"/>
@@ -442,6 +453,7 @@
                         <outlet property="addressLabel" destination="s5A-sF-Ewf" id="Ena-3J-F0V"/>
                         <outlet property="finishWalkBtn" destination="po2-TB-cfk" id="5W2-my-5r6"/>
                         <outlet property="mapView" destination="pYL-fY-U6v" id="RQn-8F-BNs"/>
+                        <outlet property="timerLabel" destination="lZC-Vc-gLR" id="YNN-0u-m6f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qh9-tB-1Qi" userLabel="First Responder" sceneMemberID="firstResponder"/>
