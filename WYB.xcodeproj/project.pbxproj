@@ -13,6 +13,10 @@
 		260A285B213CE44B00FBDE8D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 260A2859213CE44B00FBDE8D /* LaunchScreen.storyboard */; };
 		260A2866213CE44B00FBDE8D /* WYBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260A2865213CE44B00FBDE8D /* WYBTests.swift */; };
 		260A2871213CE44B00FBDE8D /* WYBUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260A2870213CE44B00FBDE8D /* WYBUITests.swift */; };
+		261FF9EE2149D8B90029EF1D /* FutureWalksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261FF9EC2149D8B90029EF1D /* FutureWalksViewController.swift */; };
+		261FF9EF2149D8B90029EF1D /* FutureWalksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 261FF9ED2149D8B90029EF1D /* FutureWalksViewController.xib */; };
+		261FF9F22149D8CF0029EF1D /* PastWalksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261FF9F02149D8CF0029EF1D /* PastWalksViewController.swift */; };
+		261FF9F32149D8CF0029EF1D /* PastWalksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 261FF9F12149D8CF0029EF1D /* PastWalksViewController.xib */; };
 		26685A87213CF92700988B68 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26685A86213CF92700988B68 /* NetworkClient.swift */; };
 		266EA87E2141AD2000F3ED3F /* SingleRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266EA87D2141AD2000F3ED3F /* SingleRequestViewController.swift */; };
 		266EA8822141CE8C00F3ED3F /* MyWalksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266EA8812141CE8C00F3ED3F /* MyWalksViewController.swift */; };
@@ -22,7 +26,6 @@
 		26B1AFFE2142432B00AF86AD /* Date+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B1AFFD2142432B00AF86AD /* Date+Additions.swift */; };
 		26B1B0002146DE6300AF86AD /* StartWalkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B1AFFF2146DE6200AF86AD /* StartWalkViewController.swift */; };
 		26B1B0022146EF8400AF86AD /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B1B0012146EF8400AF86AD /* MapViewController.swift */; };
-		26B1B00421483EA100AF86AD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B1B00321483EA000AF86AD /* MapKit.framework */; };
 		26F9DFDA214078430035F1A5 /* RequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F9DFD9214078430035F1A5 /* RequestsViewController.swift */; };
 		26F9DFE02140791A0035F1A5 /* RequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F9DFDF2140791A0035F1A5 /* RequestCell.swift */; };
 		6339A050C82359C9F975852E /* Pods_WYBUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C99A1BC048FC2A10E3FF861 /* Pods_WYBUITests.framework */; };
@@ -62,6 +65,10 @@
 		260A286C213CE44B00FBDE8D /* WYBUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WYBUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		260A2870213CE44B00FBDE8D /* WYBUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WYBUITests.swift; sourceTree = "<group>"; };
 		260A2872213CE44B00FBDE8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		261FF9EC2149D8B90029EF1D /* FutureWalksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureWalksViewController.swift; sourceTree = "<group>"; };
+		261FF9ED2149D8B90029EF1D /* FutureWalksViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FutureWalksViewController.xib; sourceTree = "<group>"; };
+		261FF9F02149D8CF0029EF1D /* PastWalksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastWalksViewController.swift; sourceTree = "<group>"; };
+		261FF9F12149D8CF0029EF1D /* PastWalksViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PastWalksViewController.xib; sourceTree = "<group>"; };
 		26685A86213CF92700988B68 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		266EA87D2141AD2000F3ED3F /* SingleRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleRequestViewController.swift; sourceTree = "<group>"; };
 		266EA8812141CE8C00F3ED3F /* MyWalksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWalksViewController.swift; sourceTree = "<group>"; };
@@ -88,7 +95,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26B1B00421483EA100AF86AD /* MapKit.framework in Frameworks */,
 				F00CA1C453409F5576322DD9 /* Pods_WYB.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -166,6 +172,17 @@
 			path = WYBUITests;
 			sourceTree = "<group>";
 		};
+		261FF9E52149D8300029EF1D /* MyWalksSwitchVC */ = {
+			isa = PBXGroup;
+			children = (
+				261FF9EC2149D8B90029EF1D /* FutureWalksViewController.swift */,
+				261FF9ED2149D8B90029EF1D /* FutureWalksViewController.xib */,
+				261FF9F02149D8CF0029EF1D /* PastWalksViewController.swift */,
+				261FF9F12149D8CF0029EF1D /* PastWalksViewController.xib */,
+			);
+			path = MyWalksSwitchVC;
+			sourceTree = "<group>";
+		};
 		26685A85213CF8BC00988B68 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +196,7 @@
 		26B032DD213CEA39005D9CC7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				261FF9E52149D8300029EF1D /* MyWalksSwitchVC */,
 				26B032E0213CEBDF005D9CC7 /* LoginViewController.swift */,
 				26F9DFD9214078430035F1A5 /* RequestsViewController.swift */,
 				26F9DFDF2140791A0035F1A5 /* RequestCell.swift */,
@@ -323,8 +341,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				261FF9F32149D8CF0029EF1D /* PastWalksViewController.xib in Resources */,
 				260A285B213CE44B00FBDE8D /* LaunchScreen.storyboard in Resources */,
 				260A2858213CE44B00FBDE8D /* Assets.xcassets in Resources */,
+				261FF9EF2149D8B90029EF1D /* FutureWalksViewController.xib in Resources */,
 				260A2856213CE44800FBDE8D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -428,7 +448,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				266EA8822141CE8C00F3ED3F /* MyWalksViewController.swift in Sources */,
+				261FF9F22149D8CF0029EF1D /* PastWalksViewController.swift in Sources */,
 				26B032E1213CEBDF005D9CC7 /* LoginViewController.swift in Sources */,
+				261FF9EE2149D8B90029EF1D /* FutureWalksViewController.swift in Sources */,
 				260A2851213CE44800FBDE8D /* AppDelegate.swift in Sources */,
 				26B1AFFC2142405900AF86AD /* JSONDecoder+Alamofire.swift in Sources */,
 				266EA8842141DF6200F3ED3F /* SettingsViewController.swift in Sources */,

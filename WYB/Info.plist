@@ -2,10 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>WYB app wants to use your present location</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>WYB app wants to use your present location</string>
+	<string>WYB wants to use your current location</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>WYB wants to use your current location</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
