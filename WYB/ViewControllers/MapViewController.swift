@@ -14,13 +14,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var finishWalkBtn: UIButton!
     @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var walkerLocation: UIButton!
     
     //create a Location Manager to be able to get the current location of the user, and set the Delegate on the class to be able to control this.
     var locationManager: CLLocationManager?
     
     //create a current location globally to be able to access is at any time
     var currentLocation: CLLocation?
+    
+    //boolean flag to call walkerLocation func 1x
+    var walkerLocationLoaded = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +41,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         mapView.delegate = self
         mapView.showsUserLocation = true
         mapView.mapType = MKMapType(rawValue: 0)!
-        mapView.userTrackingMode = MKUserTrackingMode(rawValue: 2)!
-        
+        mapView.userTrackingMode = .follow
     }
     
     //ask permission to "walker" to get the location:
@@ -70,34 +71,38 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     //setting up where to get the location from:
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let oldLocation = currentLocation
+        
         if let location = locations.first {
             currentLocation = location
+            if !walkerLocationLoaded {
+                walkerLocationLoaded = true
+                walkerLocation()
+            }
         }
-    }
-    
-    func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
+        
         //drawing path or route covered
-        if let oldLocationNew = oldLocation as CLLocation?{
-            let oldCoordinates = oldLocationNew.coordinate
+        if let newLocation = locations.first,
+            let oldLocation = oldLocation {
+            let oldCoordinates = oldLocation.coordinate
             let newCoordinates = newLocation.coordinate
             var area = [oldCoordinates, newCoordinates]
             let polyline = MKPolyline(coordinates: &area, count: area.count)
             mapView.add(polyline)
         }
     }
-    
 
-    func mapView(_ mapView: MKMapView!, rendererFor overlay: MKOverlay!) -> MKOverlayRenderer! {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if (overlay is MKPolyline) {
             let pr = MKPolylineRenderer(overlay: overlay)
             pr.strokeColor = UIColor.red
             pr.lineWidth = 5
             return pr
         }
-        return nil
+        return MKOverlayRenderer()
     }
     
-    @IBAction func walkerLocation(_ : Any) {
+    func walkerLocation() {
         //with the user's current location, we can get the center of the Map View
         if let location = currentLocation {
             let center = location.coordinate
@@ -107,15 +112,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             
             // the last view to this region using the built-in set region function:
             self.mapView.setRegion(region, animated: true)
-            
-            //add an annotation with MK point built-in to se where exactly is the user at:
-            let annotation = MKPointAnnotation()
-            //set the annotation coordinate to the walker's coordinate
-            annotation.coordinate = (location.coordinate)
-            //set the title to Walker Location
-            annotation.title = "Walker's location"
-            //add this annotation to the MapView
-            self.mapView.addAnnotation(annotation)
             
             //update the walker's address using geo coder
             let geocoder = CLGeocoder()
@@ -128,6 +124,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                     self.addressLabel.text = address
                 }
             }
+            
+//            //add an annotation with MK point built-in to se where exactly is the user at:
+//            let annotation = MKPointAnnotation()
+//            //set the annotation coordinate to the walker's coordinate
+//            annotation.coordinate = (location.coordinate)
+//            //set the title to Walker Location
+//            annotation.title = "Walker's location"
+//            //add this annotation to the MapView
+//            self.mapView.addAnnotation(annotation)
         }
     }
 }

@@ -412,9 +412,6 @@
                                 <state key="normal" title="   Walker Location" image="icons8-marker-filled-50">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
-                                <connections>
-                                    <action selector="walkerLocation:" destination="y9f-z7-YJo" eventType="touchUpInside" id="EmH-6x-ar6"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5A-sF-Ewf">
                                 <rect key="frame" x="55" y="513" width="304" height="44"/>
@@ -439,7 +436,6 @@
                         <outlet property="addressLabel" destination="s5A-sF-Ewf" id="Ena-3J-F0V"/>
                         <outlet property="finishWalkBtn" destination="po2-TB-cfk" id="5W2-my-5r6"/>
                         <outlet property="mapView" destination="pYL-fY-U6v" id="RQn-8F-BNs"/>
-                        <outlet property="walkerLocation" destination="CdQ-Ru-eQk" id="Z9l-LU-gpl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qh9-tB-1Qi" userLabel="First Responder" sceneMemberID="firstResponder"/>
