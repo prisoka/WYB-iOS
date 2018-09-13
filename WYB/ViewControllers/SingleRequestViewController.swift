@@ -35,6 +35,12 @@ class SingleRequestViewController: UIViewController {
         if let request = request {
             setRequest(request: request)
         }
+        
+        dogPhoto.layer.borderWidth = 1.0
+        dogPhoto.layer.masksToBounds = false
+        dogPhoto.layer.borderColor = UIColor.white.cgColor
+        dogPhoto.layer.cornerRadius = dogPhoto.frame.size.width / 2
+        dogPhoto.clipsToBounds = true
     }
     
     // instantiating and presenting alert box
