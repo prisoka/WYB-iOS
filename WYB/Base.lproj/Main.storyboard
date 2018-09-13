@@ -665,6 +665,7 @@
                     <navigationItem key="navigationItem" title="My Walks" id="b0T-4U-Wf9"/>
                     <connections>
                         <outlet property="acceptedReqCollectionView" destination="vws-vb-cPP" id="kbL-Zf-Hd4"/>
+                        <outlet property="myWalksSegmentControl" destination="Vx1-ft-XIC" id="SUB-8K-zXg"/>
                         <segue destination="vc5-NE-8UB" kind="show" identifier="StartWalkCardDetailsSegue" id="gDd-gi-BNF"/>
                     </connections>
                 </viewController>

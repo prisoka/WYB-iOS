@@ -10,14 +10,16 @@ import UIKit
 
 class MyWalksViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
+    
+    @IBOutlet weak var myWalksSegmentControl: UISegmentedControl!
     @IBOutlet weak var acceptedReqCollectionView: UICollectionView!
     
     let networkClient = NetworkClient()
     
-    var requests = [WalkRequest]()
+    var allRequests = [WalkRequest]()
+    var filteredRequests = [WalkRequest]()
     
     var selectedRequest: WalkRequest?
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,10 +34,8 @@ class MyWalksViewController: UIViewController, UICollectionViewDelegate, UIColle
             if let error = error {
                 self.displayAlert(message: error.localizedDescription)
             } else if let requests = requests {
-                let filteredRequests = requests.filter({ (request) -> Bool in
-                    request.walkerId == userId
-                })
-                self.requests = filteredRequests
+                self.allRequests = requests
+                self.myWalksSegmentControl.sendActions(for: .valueChanged)
                 self.acceptedReqCollectionView.reloadData()
             }
         })
@@ -55,14 +55,14 @@ class MyWalksViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return requests.count
+        return filteredRequests.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "upcomingWalksCell", for: indexPath) as! RequestCell
         
-        let request = requests[indexPath.row]
+        let request = filteredRequests[indexPath.row]
         
         // using Kingfish to load image from URL async
         if let urlString = request.dogPhotoUrl,
@@ -82,7 +82,7 @@ class MyWalksViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedRequest = requests[indexPath.row]
+        selectedRequest = filteredRequests[indexPath.row]
         performSegue(withIdentifier: "StartWalkCardDetailsSegue", sender: nil)
     }
     
@@ -94,13 +94,30 @@ class MyWalksViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
     }
     
+    func pastWalks() -> [WalkRequest] {
+        let pastWalks = allRequests.filter({ (request) -> Bool in
+            request.walkerId == userId //&& request.finishDate != nil
+        })
+        return pastWalks
+    }
+    
+    func upcomingWalks() -> [WalkRequest] {
+        let upcomingWalks = allRequests.filter({ (request) -> Bool in
+            request.walkerId == userId //&& request.finishDate == nil
+        })
+        return upcomingWalks
+    }
+    
     @IBAction func toggle(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             print("NEXT WALKS")
-            // open next walks
+            
+            filteredRequests = upcomingWalks()
         } else {
             print("PAST WALKS")
-            // open "finished" walks
+        
+            filteredRequests = pastWalks()
         }
+        acceptedReqCollectionView.reloadData()
     }
 }
