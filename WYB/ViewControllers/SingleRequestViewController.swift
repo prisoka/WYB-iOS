@@ -18,10 +18,8 @@ class SingleRequestViewController: UIViewController {
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var location: UILabel!
     @IBOutlet weak var acceptBtn: UIButton!
-    @IBOutlet weak var declineBtn: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var singleCardView: UIView!
-    @IBOutlet weak var btnsView: UIView!
     
     // this is how I instantiate the Object that lives in Model > NetworkClient.swift. I can use this anywhere inside RequestsViewController class
     let networkClient = NetworkClient()
@@ -65,13 +63,11 @@ class SingleRequestViewController: UIViewController {
             ownerName.text = "Owner: " + request.userName
             date.text = "Date: " + request.requestDateString
             time.text = "Time: " + request.requestTimeString
-            location.text = "Pick up at: " + request.addressOne + ", " + (request.addressTwo ?? "")
+            location.text = "Pick up: " + request.addressOne + ", " + (request.addressTwo ?? "")
             
             singleCardView.layer.cornerRadius = 10
             singleCardView.layer.borderWidth = 2
             singleCardView.layer.borderColor = UIColor(red: 0/255.0, green: 209/255.0, blue: 178/255.0, alpha: 1).cgColor
-            
-            btnsView.isHidden = request.walkerId != nil
         }
     }
     
@@ -87,14 +83,5 @@ class SingleRequestViewController: UIViewController {
             })
         }
     }
-    
-    
-    @IBAction func declineBtnTapped(_ sender: Any) {
-        activityIndicator.isHidden = false
-        activityIndicator.startAnimating()
-        
-//        networkClient.declineRequest(request, completionBlock: {
-//
-//        })
-    }
 }
+

@@ -49,11 +49,11 @@ class StartWalkViewController: UIViewController {
                 dogPhoto.kf.setImage(with: url)
             }
             
-            dogName.text = "Dog: " + request.dogName
+            dogName.text = request.dogName
             ownerName.text = "Owner: " + request.userName
             date.text = "Date: " + request.requestDateString
             time.text = "Time: " + request.requestTimeString
-            location.text = "Pick up at: " + request.addressOne + ", " + (request.addressTwo ?? "")
+            location.text = "Pick up: " + request.addressOne + ", " + (request.addressTwo ?? "")
             
             startWalkCardView.layer.cornerRadius = 10
             startWalkCardView.layer.borderWidth = 2
