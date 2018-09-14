@@ -67,7 +67,7 @@ class RequestsViewController: UIViewController, UICollectionViewDataSource, UICo
             cell.dogPhoto.kf.setImage(with: url)
         }
         
-        cell.dogName.text = "Dog: " + request.dogName
+        cell.dogName.text = request.dogName
         cell.requestDate.text = "Date: " + request.requestDateString
         cell.requestTime.text = "Time: " + request.requestTimeString
         
