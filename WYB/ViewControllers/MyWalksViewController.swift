@@ -96,14 +96,14 @@ class MyWalksViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     func pastWalks() -> [WalkRequest] {
         let pastWalks = allRequests.filter({ (request) -> Bool in
-            request.walkerId == userId //&& request.finishDate != nil
+            request.walkerId == userId && request.finishWalkTimeString != nil
         })
         return pastWalks
     }
     
     func upcomingWalks() -> [WalkRequest] {
         let upcomingWalks = allRequests.filter({ (request) -> Bool in
-            request.walkerId == userId //&& request.finishDate == nil
+            request.walkerId == userId && request.finishWalkTimeString == nil
         })
         return upcomingWalks
     }

@@ -57,6 +57,8 @@ struct WalkRequest: Codable {
     let id: Int
     let requestDateString: String
     let requestTimeString: String
+    let startWalkTimeString: String?
+    let finishWalkTimeString: String?
     let walkerId: Int?
     
     enum CodingKeys: String, CodingKey {
@@ -70,6 +72,8 @@ struct WalkRequest: Codable {
         case id = "id"
         case requestDateString = "request_date"
         case requestTimeString = "request_time"
+        case startWalkTimeString = "start_walk_time"
+        case finishWalkTimeString = "finish_walk_time"
         case walkerId = "walker_id"
     }
 }
