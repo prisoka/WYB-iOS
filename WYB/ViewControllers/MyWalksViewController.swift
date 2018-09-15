@@ -71,8 +71,8 @@ class MyWalksViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
         
         cell.dogName.text = request.dogName
-        cell.requestDate.text = "Date: " + request.requestDateString
-        cell.requestTime.text = "Time: " + request.requestTimeString
+//        cell.requestDate.text = "Date: " + request.requestDateString
+//        cell.requestTime.text = "Time: " + request.requestTimeString
         
 //        cell.layer.cornerRadius = 10
 //        cell.layer.borderWidth = 2

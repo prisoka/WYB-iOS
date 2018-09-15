@@ -17,6 +17,7 @@
 		261FF9EF2149D8B90029EF1D /* FutureWalksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 261FF9ED2149D8B90029EF1D /* FutureWalksViewController.xib */; };
 		261FF9F22149D8CF0029EF1D /* PastWalksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261FF9F02149D8CF0029EF1D /* PastWalksViewController.swift */; };
 		261FF9F32149D8CF0029EF1D /* PastWalksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 261FF9F12149D8CF0029EF1D /* PastWalksViewController.xib */; };
+		264489A0214CB323005A2770 /* DateFormatter+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2644899F214CB323005A2770 /* DateFormatter+Additions.swift */; };
 		26685A87213CF92700988B68 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26685A86213CF92700988B68 /* NetworkClient.swift */; };
 		266EA87E2141AD2000F3ED3F /* SingleRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266EA87D2141AD2000F3ED3F /* SingleRequestViewController.swift */; };
 		266EA8822141CE8C00F3ED3F /* MyWalksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266EA8812141CE8C00F3ED3F /* MyWalksViewController.swift */; };
@@ -69,6 +70,7 @@
 		261FF9ED2149D8B90029EF1D /* FutureWalksViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FutureWalksViewController.xib; sourceTree = "<group>"; };
 		261FF9F02149D8CF0029EF1D /* PastWalksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastWalksViewController.swift; sourceTree = "<group>"; };
 		261FF9F12149D8CF0029EF1D /* PastWalksViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PastWalksViewController.xib; sourceTree = "<group>"; };
+		2644899F214CB323005A2770 /* DateFormatter+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Additions.swift"; sourceTree = "<group>"; };
 		26685A86213CF92700988B68 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		266EA87D2141AD2000F3ED3F /* SingleRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleRequestViewController.swift; sourceTree = "<group>"; };
 		266EA8812141CE8C00F3ED3F /* MyWalksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWalksViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				26685A86213CF92700988B68 /* NetworkClient.swift */,
 				26B1AFFB2142405900AF86AD /* JSONDecoder+Alamofire.swift */,
 				26B1AFFD2142432B00AF86AD /* Date+Additions.swift */,
+				2644899F214CB323005A2770 /* DateFormatter+Additions.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 				26B032E1213CEBDF005D9CC7 /* LoginViewController.swift in Sources */,
 				261FF9EE2149D8B90029EF1D /* FutureWalksViewController.swift in Sources */,
 				260A2851213CE44800FBDE8D /* AppDelegate.swift in Sources */,
+				264489A0214CB323005A2770 /* DateFormatter+Additions.swift in Sources */,
 				26B1AFFC2142405900AF86AD /* JSONDecoder+Alamofire.swift in Sources */,
 				266EA8842141DF6200F3ED3F /* SettingsViewController.swift in Sources */,
 				26F9DFE02140791A0035F1A5 /* RequestCell.swift in Sources */,

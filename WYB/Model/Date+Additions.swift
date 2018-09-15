@@ -11,28 +11,31 @@ import Foundation
 //extension String {
 //    func toDate() -> Date? {
 //        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ"
+//        dateFormatter.dateFormat = "MM-dd-yyyy" //"yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ"
 //        return dateFormatter.date(from: self)
 //    }
 //}
 
-extension String {
-    func convertDateFormatter(date: String) -> String {
+extension Date {
+    func toFormattedString() -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ"//string date format
-        dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
-        dateFormatter.locale = Locale(identifier: "en_US")
-        let convertedDate = dateFormatter.date(from: self)
+        dateFormatter.dateFormat = "MM'-'dd'-'yyyy"
+        
+        return dateFormatter.string(from: self)
+    }
+}
 
-        guard dateFormatter.date(from: date) != nil else {
-            assert(false, "no date from string")
+extension String {
+    func toFormattedTimeString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm:ss"
+        
+        if let date = dateFormatter.date(from: self) {
+            let timeFormatter = DateFormatter()
+            timeFormatter.dateFormat = "K:mm a"
+            return timeFormatter.string(from: date)
+        } else{
             return ""
         }
-
-        dateFormatter.dateFormat = "MM'-'dd'-'yyyy"// format I want to convert
-        dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
-        let timeStamp = dateFormatter.string(from: convertedDate!)
-        print(timeStamp)
-        return timeStamp
     }
 }

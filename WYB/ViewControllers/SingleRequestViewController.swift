@@ -61,8 +61,8 @@ class SingleRequestViewController: UIViewController {
             
             dogName.text = "Dog: " + request.dogName
             ownerName.text = "Owner: " + request.userName
-            date.text = "Date: " + request.requestDateString
-            time.text = "Time: " + request.requestTimeString
+//            date.text = "Date: " + request.requestDateString
+//            time.text = "Time: " + request.requestTimeString
             location.text = "Pick up: " + request.addressOne + ", " + (request.addressTwo ?? "")
             
             singleCardView.layer.cornerRadius = 10

@@ -51,8 +51,8 @@ class StartWalkViewController: UIViewController {
             
             dogName.text = request.dogName
             ownerName.text = "Owner: " + request.userName
-            date.text = "Date: " + request.requestDateString
-            time.text = "Time: " + request.requestTimeString
+//            date.text = "Date: " + request.requestDateString
+//            time.text = "Time: " + request.requestTimeString
             location.text = "Pick up: " + request.addressOne + ", " + (request.addressTwo ?? "")
             
             startWalkCardView.layer.cornerRadius = 10

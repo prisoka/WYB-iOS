@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import Foundation
 
 class RequestsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
@@ -67,9 +68,13 @@ class RequestsViewController: UIViewController, UICollectionViewDataSource, UICo
             cell.dogPhoto.kf.setImage(with: url)
         }
         
+        let dateString = Date()
+//        let date = dateString.toDate(dateFormat: "yyyy-MM-dd")
+//        print("Date is \(date)")
+        
         cell.dogName.text = request.dogName
-        cell.requestDate.text = "Date: " + request.requestDateString
-        cell.requestTime.text = "Time: " + request.requestTimeString
+        cell.requestDate.text = "Date: " + request.requestDate.toFormattedString()
+        cell.requestTime.text = "Time: " + request.requestTimeString.toFormattedTimeString()
         
 //        cell.layer.cornerRadius = 10
 //        cell.layer.borderWidth = 2

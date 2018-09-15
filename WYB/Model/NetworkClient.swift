@@ -55,7 +55,7 @@ struct WalkRequest: Codable {
     let dogName: String
     let dogPhotoUrl: String?
     let id: Int
-    let requestDateString: String
+    let requestDate: Date
     let requestTimeString: String
     let startWalkTimeString: String?
     let finishWalkTimeString: String?
@@ -70,7 +70,7 @@ struct WalkRequest: Codable {
         case dogName = "dog_name"
         case dogPhotoUrl = "dog_photo_url"
         case id = "id"
-        case requestDateString = "request_date"
+        case requestDate = "request_date"
         case requestTimeString = "request_time"
         case startWalkTimeString = "start_walk_time"
         case finishWalkTimeString = "finish_walk_time"
@@ -119,13 +119,15 @@ class NetworkClient {
                 
                 print(response)
                 // decoding the data from JSON into login response obj
-                let loginResponse = try? JSONDecoder().decode(LoginResponse.self, from: data)
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601Full)
+                let loginResponse = try? decoder.decode(LoginResponse.self, from: data)
                 
                 if let loginResponse = loginResponse {
                     userId = loginResponse.user_id
                     completionBlock(loginResponse, nil)
                 } else {
-                    let loginResponseError = try? JSONDecoder().decode(NetworkResponseError.self, from: data)
+                    let loginResponseError = try? decoder.decode(NetworkResponseError.self, from: data)
                     completionBlock(nil, loginResponseError)
                 }
             }
@@ -141,6 +143,7 @@ class NetworkClient {
             print("Response: \(String(describing: response.response))") // http url response
             print("Result: \(response.result)")                         // response serialization result
             let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601Full)
             let decodedResponse: Result<[WalkRequest]> = decoder.decodeResponse(from: response)
 
             switch decodedResponse {
@@ -168,6 +171,7 @@ class NetworkClient {
             print("Response: \(String(describing: response.response))") // http url response
             print("Result: \(response.result)")                         // response serialization result
             let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601Full)
             let decodedResponse: Result<[WalkRequest]> = decoder.decodeResponse(from: response)
             
             switch decodedResponse {
@@ -204,6 +208,7 @@ class NetworkClient {
                 print("Response: \(String(describing: response.response))") // http url response
                 print("Result: \(response.result)")                         // response serialization result
                 let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601Full)
                 let decodedResponse: Result<WalkRequest> = decoder.decodeResponse(from: response)
                 
                 switch decodedResponse {
