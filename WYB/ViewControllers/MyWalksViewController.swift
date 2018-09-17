@@ -39,6 +39,12 @@ class MyWalksViewController: UIViewController, UICollectionViewDelegate, UIColle
                 self.acceptedReqCollectionView.reloadData()
             }
         })
+        
+        if let tabItems = tabBarController?.tabBar.items {
+            // In this case we want to modify the badge number of the third tab:
+            let tabItem = tabItems[1]
+            tabItem.badgeValue = nil
+        }
     }
     
     // instantiating and presenting alert box

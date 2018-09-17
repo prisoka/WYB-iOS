@@ -79,6 +79,14 @@ class SingleRequestViewController: UIViewController {
             networkClient.updateOneRequest(request: request, completionBlock: {_,_ in 
                 self.activityIndicator.isHidden = true
                 self.activityIndicator.stopAnimating()
+                
+                self.navigationController?.popViewController(animated: true)
+                
+                if let tabItems = self.tabBarController?.tabBar.items {
+                    // In this case we want to modify the badge number of the third tab:
+                    let tabItem = tabItems[1]
+                    tabItem.badgeValue = "new"
+                }
             })
         }
     }
