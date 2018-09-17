@@ -59,10 +59,10 @@ class SingleRequestViewController: UIViewController {
                 dogPhoto.kf.setImage(with: url)
             }
             
-            dogName.text = "Dog: " + request.dogName
+            dogName.text = request.dogName
             ownerName.text = "Owner: " + request.userName
-//            date.text = "Date: " + request.requestDateString
-//            time.text = "Time: " + request.requestTimeString
+            date.text = "Date: " + request.requestDate.toFormattedString()
+            time.text = "Time: " + request.requestTimeString.toFormattedTimeString()
             location.text = "Pick up: " + request.addressOne + ", " + (request.addressTwo ?? "")
             
             singleCardView.layer.cornerRadius = 10
@@ -79,7 +79,6 @@ class SingleRequestViewController: UIViewController {
             networkClient.updateOneRequest(request: request, completionBlock: {_,_ in 
                 self.activityIndicator.isHidden = true
                 self.activityIndicator.stopAnimating()
-                
             })
         }
     }

@@ -84,16 +84,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         alertController.addAction(alertAction)
         present(alertController, animated: true, completion: nil)
     }
-
-//    public func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
-//        if let text = textField.text {
-//            if(textField == emailTextField){
-//                email = text
-//            } else if(textField == passwordTextField) {
-//                password = text
-//            }
-//        }
-//    }
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()

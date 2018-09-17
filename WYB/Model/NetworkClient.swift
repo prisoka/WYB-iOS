@@ -195,6 +195,8 @@ class NetworkClient {
     
     func updateOneRequest(request: WalkRequest, completionBlock: @escaping (WalkRequest?, Error?) -> Void) {
         let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .iso8601
+        
         let data = try? encoder.encode(request)
         
         if let url = URL(string: apiUrl+"requests/"+"\(request.id)") {
