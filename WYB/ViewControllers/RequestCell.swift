@@ -14,4 +14,5 @@ class RequestCell: UICollectionViewCell {
     @IBOutlet weak var dogName: UILabel!
     @IBOutlet weak var requestDate: UILabel!
     @IBOutlet weak var requestTime: UILabel!
+    @IBOutlet weak var nextPageIcon: UIImageView!
 }

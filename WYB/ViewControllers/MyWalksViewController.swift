@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum WalkType {
+    case upcoming
+    case past
+}
+
 class MyWalksViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     
@@ -15,7 +20,7 @@ class MyWalksViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var acceptedReqCollectionView: UICollectionView!
     
     let networkClient = NetworkClient()
-    
+    var selectedWalkType = WalkType.upcoming
     var allRequests = [WalkRequest]()
     var filteredRequests = [WalkRequest]()
     
@@ -76,6 +81,8 @@ class MyWalksViewController: UIViewController, UICollectionViewDelegate, UIColle
             cell.dogPhoto.kf.setImage(with: url)
         }
         
+        cell.nextPageIcon.isHidden = selectedWalkType == .past
+        
         cell.dogName.text = request.dogName
         cell.requestDate.text = "Date: " + request.requestDate.toFormattedString()
         cell.requestTime.text = "Time: " + request.requestTimeString.toFormattedTimeString()
@@ -89,7 +96,10 @@ class MyWalksViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedRequest = filteredRequests[indexPath.row]
-        performSegue(withIdentifier: "StartWalkCardDetailsSegue", sender: nil)
+        
+        if selectedWalkType == .upcoming {
+            performSegue(withIdentifier: "StartWalkCardDetailsSegue", sender: nil)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -117,11 +127,11 @@ class MyWalksViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBAction func toggle(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             print("NEXT WALKS")
-            
+            selectedWalkType = .upcoming
             filteredRequests = upcomingWalks()
         } else {
             print("PAST WALKS")
-        
+            selectedWalkType = .past
             filteredRequests = pastWalks()
         }
         acceptedReqCollectionView.reloadData()
