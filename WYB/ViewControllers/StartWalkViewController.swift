@@ -23,6 +23,7 @@ class StartWalkViewController: UIViewController {
     let networkClient = NetworkClient()
     
     var request: WalkRequest?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -61,6 +62,13 @@ class StartWalkViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "StartWalkSegue",
+            let mapViewController = segue.destination as? MapViewController {
+            mapViewController.request = request
+        }
+    }
+    
     @IBAction func contactOwnerBtnTapped(_ sender: Any) {
         if let request = self.request,
             let phoneNumber = request.phoneNumber,
@@ -69,5 +77,9 @@ class StartWalkViewController: UIViewController {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
         }
+    }
+    
+    @IBAction func startWalkBtnTapped(_ sender: Any) {
+        performSegue(withIdentifier: "StartWalkSegue", sender: self)
     }
 }

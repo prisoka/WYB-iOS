@@ -16,6 +16,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
     
+    let networkClient = NetworkClient()
+    
+    var request: WalkRequest?
+    
     //create a Location Manager to be able to get the current location of the user, and set the Delegate on the class to be able to control this.
     var locationManager: CLLocationManager?
     
@@ -158,10 +162,20 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
     }
     
+    func updateRequest() {
+        if var request = request {
+            request.finishWalkDate = Date()
+            networkClient.updateOneRequest(request: request, completionBlock: {_,_ in
+                self.performSegue(withIdentifier: "UnwindFromMapVC", sender: nil)
+            })
+        }
+    }
+    
     @IBAction func finishWalkBtnTapped(_ sender: Any) {
         endTimer()
         mapView.showsUserLocation = false
         locationManager?.stopUpdatingLocation()
+        updateRequest()
     }
     
 }

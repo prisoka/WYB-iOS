@@ -360,7 +360,7 @@
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="y9f-z7-YJo" kind="show" id="MQ7-eF-OhU"/>
+                                            <action selector="startWalkBtnTapped:" destination="vc5-NE-8UB" eventType="touchUpInside" id="nhQ-np-n0c"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Jm-Ux-oZA">
@@ -423,6 +423,7 @@
                         <outlet property="startWalkBtn" destination="ppn-sS-MWq" id="Fhx-es-Yrd"/>
                         <outlet property="startWalkCardView" destination="ntk-2a-mn7" id="uKn-D8-WoN"/>
                         <outlet property="time" destination="vbl-Py-quO" id="Cio-hp-v1l"/>
+                        <segue destination="y9f-z7-YJo" kind="show" identifier="StartWalkSegue" id="llo-uO-jXF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h7d-jt-0RK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -484,9 +485,11 @@
                         <outlet property="finishWalkBtn" destination="po2-TB-cfk" id="5W2-my-5r6"/>
                         <outlet property="mapView" destination="pYL-fY-U6v" id="RQn-8F-BNs"/>
                         <outlet property="timerLabel" destination="lZC-Vc-gLR" id="YNN-0u-m6f"/>
+                        <segue destination="Brl-Nx-jhY" kind="unwind" identifier="UnwindFromMapVC" unwindAction="unwindToMyWalksVCWithSegue:" id="sxY-VQ-MtP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qh9-tB-1Qi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Brl-Nx-jhY" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4784.8000000000002" y="-638.2308845577212"/>
         </scene>

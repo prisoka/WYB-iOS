@@ -110,16 +110,21 @@ class MyWalksViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
     }
     
+    @IBAction func unwindToMyWalksVC(segue:UIStoryboardSegue) {
+    
+    }
+
+    
     func pastWalks() -> [WalkRequest] {
         let pastWalks = allRequests.filter({ (request) -> Bool in
-            request.walkerId == userId && request.finishWalkTimeString != nil
+            request.walkerId == userId && request.finishWalkDate != nil
         })
         return pastWalks
     }
     
     func upcomingWalks() -> [WalkRequest] {
         let upcomingWalks = allRequests.filter({ (request) -> Bool in
-            request.walkerId == userId && request.finishWalkTimeString == nil
+            request.walkerId == userId && request.finishWalkDate == nil
         })
         return upcomingWalks
     }
