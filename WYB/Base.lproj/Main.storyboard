@@ -638,23 +638,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Vx1-ft-XIC">
-                                <rect key="frame" x="16" y="94" width="343" height="37"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="51s-2h-guY">
+                                <rect key="frame" x="0.0" y="64" width="375" height="75"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Vx1-ft-XIC">
+                                        <rect key="frame" x="32" y="24" width="311" height="28"/>
+                                        <segments>
+                                            <segment title="Upcoming"/>
+                                            <segment title="Past"/>
+                                        </segments>
+                                        <color key="tintColor" red="0.0" green="0.81960784313725488" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="toggle:" destination="HyA-3c-G1U" eventType="valueChanged" id="h7g-3u-FfI"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bUE-2k-TQH">
+                                        <rect key="frame" x="0.0" y="74" width="375" height="1"/>
+                                        <color key="backgroundColor" white="0.92963927469135799" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="EZ1-jo-PWW"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="Ogm-vu-Rxt"/>
+                                    <constraint firstItem="bUE-2k-TQH" firstAttribute="leading" secondItem="51s-2h-guY" secondAttribute="leading" id="BQF-4k-REb"/>
+                                    <constraint firstAttribute="height" constant="75" id="L64-jR-sTr"/>
+                                    <constraint firstAttribute="bottom" secondItem="bUE-2k-TQH" secondAttribute="bottom" id="Wjp-kA-tu7"/>
+                                    <constraint firstItem="Vx1-ft-XIC" firstAttribute="leading" secondItem="51s-2h-guY" secondAttribute="leading" constant="32" id="dqi-pI-tRY"/>
+                                    <constraint firstAttribute="trailing" secondItem="Vx1-ft-XIC" secondAttribute="trailing" constant="32" id="e4r-fi-KzQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="bUE-2k-TQH" secondAttribute="trailing" id="set-WM-SOW"/>
+                                    <constraint firstItem="Vx1-ft-XIC" firstAttribute="top" secondItem="51s-2h-guY" secondAttribute="top" constant="24" id="vqw-zt-a7c"/>
+                                    <constraint firstAttribute="bottom" secondItem="Vx1-ft-XIC" secondAttribute="bottom" constant="24" id="wdq-1e-qK5"/>
                                 </constraints>
-                                <segments>
-                                    <segment title="Upcoming"/>
-                                    <segment title="Past"/>
-                                </segments>
-                                <color key="tintColor" red="0.0" green="0.81960784313725488" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <action selector="toggle:" destination="HyA-3c-G1U" eventType="valueChanged" id="h7g-3u-FfI"/>
-                                </connections>
-                            </segmentedControl>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vws-vb-cPP">
-                                <rect key="frame" x="0.0" y="155" width="375" height="463"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vws-vb-cPP">
+                                <rect key="frame" x="0.0" y="139" width="375" height="479"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="EpB-HK-qQ1">
                                     <size key="itemSize" width="312" height="250"/>
@@ -728,9 +747,13 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="i7J-tT-eFD" firstAttribute="trailing" secondItem="Vx1-ft-XIC" secondAttribute="trailing" constant="16" id="IfP-Il-Thd"/>
-                            <constraint firstItem="Vx1-ft-XIC" firstAttribute="leading" secondItem="i7J-tT-eFD" secondAttribute="leading" constant="16" id="X5u-me-rSU"/>
-                            <constraint firstItem="i7J-tT-eFD" firstAttribute="top" secondItem="Vx1-ft-XIC" secondAttribute="top" constant="-30" id="ir4-Jq-ezl"/>
+                            <constraint firstItem="i7J-tT-eFD" firstAttribute="bottom" secondItem="vws-vb-cPP" secondAttribute="bottom" id="0W9-R7-Nhv"/>
+                            <constraint firstItem="i7J-tT-eFD" firstAttribute="leading" secondItem="51s-2h-guY" secondAttribute="leading" id="LhO-r7-ysq"/>
+                            <constraint firstItem="i7J-tT-eFD" firstAttribute="trailing" secondItem="vws-vb-cPP" secondAttribute="trailing" id="N90-Nj-Exd"/>
+                            <constraint firstItem="vws-vb-cPP" firstAttribute="leading" secondItem="i7J-tT-eFD" secondAttribute="leading" id="dG2-dW-GXw"/>
+                            <constraint firstItem="vws-vb-cPP" firstAttribute="top" secondItem="51s-2h-guY" secondAttribute="bottom" id="kaA-ab-zJz"/>
+                            <constraint firstItem="51s-2h-guY" firstAttribute="trailing" secondItem="i7J-tT-eFD" secondAttribute="trailing" id="o2N-tQ-w8s"/>
+                            <constraint firstItem="51s-2h-guY" firstAttribute="top" secondItem="i7J-tT-eFD" secondAttribute="top" id="qKa-ky-KdP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="i7J-tT-eFD"/>
                     </view>
