@@ -110,6 +110,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         if let location = locations.first {
             currentLocation = location
+//            mapView.setCenter(mapView.userLocation.coordinate, animated: true)
+            
             if !walkerLocationLoaded {
                 walkerLocationLoaded = true
                 walkerLocation()
