@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -183,7 +182,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-next-page-64" translatesAutoresizingMaskIntoConstraints="NO" id="mfe-2F-Dbh">
-                                                    <rect key="frame" x="264" y="212" width="32" height="32"/>
+                                                    <rect key="frame" x="96" y="44" width="200" height="200"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
@@ -313,7 +312,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ntk-2a-mn7">
-                                <rect key="frame" x="32" y="96" width="311" height="469.5"/>
+                                <rect key="frame" x="32" y="96" width="311" height="493.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pMZ-c2-0kf">
                                         <rect key="frame" x="80.5" y="32" width="150" height="150"/>
@@ -353,7 +352,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ppn-sS-MWq">
-                                        <rect key="frame" x="32" y="359.5" width="247" height="31"/>
+                                        <rect key="frame" x="32" y="359.5" width="247" height="43"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <inset key="contentEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                                         <state key="normal" title="  Start Walk" image="icons8-cat-footprint-filled-50">
@@ -364,7 +363,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Jm-Ux-oZA">
-                                        <rect key="frame" x="32" y="406.5" width="247" height="31"/>
+                                        <rect key="frame" x="32" y="418.5" width="247" height="43"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <inset key="contentEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                                         <state key="normal" title="  Contact Owner" image="icons8-phone-50 (1)">
@@ -524,7 +523,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UHM-N9-Ezn">
-                                <rect key="frame" x="32" y="96" width="311" height="474"/>
+                                <rect key="frame" x="32" y="96" width="311" height="475"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kmP-Nk-XPH">
                                         <rect key="frame" x="80.5" y="32" width="150" height="150"/>
@@ -533,35 +532,35 @@
                                             <constraint firstAttribute="width" secondItem="kmP-Nk-XPH" secondAttribute="height" multiplier="1:1" id="YvC-wv-QLR"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Owner Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dff-sv-wbk">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Owner Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dff-sv-wbk">
                                         <rect key="frame" x="32" y="226" width="247" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brT-Y3-uQE">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brT-Y3-uQE">
                                         <rect key="frame" x="32" y="257" width="247" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dog:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAR-Eh-o6E">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Dog:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAR-Eh-o6E">
                                         <rect key="frame" x="32" y="192" width="247" height="24"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="location" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gn-pE-0Bh">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="location" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gn-pE-0Bh">
                                         <rect key="frame" x="32" y="319" width="247" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="4EV-vQ-Rd2">
-                                        <rect key="frame" x="32" y="432" width="247" height="37"/>
+                                        <rect key="frame" x="32" y="433" width="247" height="37"/>
                                         <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </activityIndicatorView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1cA-uD-pCa">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1cA-uD-pCa">
                                         <rect key="frame" x="32" y="359.5" width="247" height="82.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <inset key="contentEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
@@ -572,7 +571,7 @@
                                             <action selector="acceptBtnTapped:" destination="6Hq-VB-5fG" eventType="touchUpInside" id="d5K-WG-Q7D"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lew-K4-6Hw">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lew-K4-6Hw">
                                         <rect key="frame" x="32" y="288" width="247" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -714,7 +713,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-next-page-64" translatesAutoresizingMaskIntoConstraints="NO" id="l2Q-A8-bC1" userLabel="Next Page">
-                                                    <rect key="frame" x="264" y="202" width="32" height="32"/>
+                                                    <rect key="frame" x="96" y="34" width="200" height="200"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
@@ -797,18 +796,18 @@
     <resources>
         <image name="Flora" width="4000" height="3000"/>
         <image name="PeanutButter" width="4896" height="3264"/>
-        <image name="icons8-admin-settings-male-50" width="25" height="25"/>
-        <image name="icons8-calendar-51" width="25" height="25"/>
-        <image name="icons8-cat-footprint-filled-50" width="25" height="25"/>
-        <image name="icons8-checkmark-64" width="32" height="32"/>
-        <image name="icons8-exit-50" width="25" height="25"/>
-        <image name="icons8-gears-50" width="25" height="25"/>
-        <image name="icons8-hand-50" width="25" height="25"/>
-        <image name="icons8-help-50" width="25" height="25"/>
-        <image name="icons8-marker-filled-50" width="25" height="25"/>
-        <image name="icons8-next-page-64" width="32" height="32"/>
-        <image name="icons8-phone-50 (1)" width="25" height="25"/>
-        <image name="icons8-realtime-50" width="25" height="25"/>
-        <image name="icons8-today-51" width="25" height="25"/>
+        <image name="icons8-admin-settings-male-50" width="37.5" height="37.5"/>
+        <image name="icons8-calendar-51" width="37.5" height="37.5"/>
+        <image name="icons8-cat-footprint-filled-50" width="37.5" height="37.5"/>
+        <image name="icons8-checkmark-64" width="200.34782409667969" height="200.34782409667969"/>
+        <image name="icons8-exit-50" width="37.5" height="37.5"/>
+        <image name="icons8-gears-50" width="37.5" height="37.5"/>
+        <image name="icons8-hand-50" width="37.5" height="37.5"/>
+        <image name="icons8-help-50" width="37.5" height="37.5"/>
+        <image name="icons8-marker-filled-50" width="37.5" height="37.5"/>
+        <image name="icons8-next-page-64" width="200.34782409667969" height="200.34782409667969"/>
+        <image name="icons8-phone-50 (1)" width="37.5" height="37.5"/>
+        <image name="icons8-realtime-50" width="37.5" height="37.5"/>
+        <image name="icons8-today-51" width="37.5" height="37.5"/>
     </resources>
 </document>

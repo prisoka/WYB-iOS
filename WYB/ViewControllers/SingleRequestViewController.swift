@@ -76,7 +76,7 @@ class SingleRequestViewController: UIViewController {
             activityIndicator.isHidden = false
             activityIndicator.startAnimating()
             
-            networkClient.updateOneRequest(request: request, completionBlock: {_,_ in 
+            networkClient.updateOneRequestAccepted(request: request, completionBlock: {_,_ in 
                 self.activityIndicator.isHidden = true
                 self.activityIndicator.stopAnimating()
                 

@@ -164,10 +164,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
     }
     
-    func updateRequest() {
+    func updateRequestWithFinishDateTime() {
         if var request = request {
             request.finishWalkDate = Date()
-            networkClient.updateOneRequest(request: request, completionBlock: {_,_ in
+            networkClient.updateOneRequestWalkFinishes(request: request, completionBlock: {_,_ in
                 self.performSegue(withIdentifier: "UnwindFromMapVC", sender: nil)
             })
         }
@@ -177,7 +177,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         endTimer()
         mapView.showsUserLocation = false
         locationManager?.stopUpdatingLocation()
-        updateRequest()
+        updateRequestWithFinishDateTime()
     }
     
 }

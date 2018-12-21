@@ -79,7 +79,16 @@ class StartWalkViewController: UIViewController {
         }
     }
     
+    func updateRequestWithStartDateTime() {
+        if var request = request {
+            request.startWalkDate = Date()
+            networkClient.updateOneRequestWalkStarts(request: request, completionBlock: {_,_ in
+                self.performSegue(withIdentifier: "StartWalkSegue", sender: self)
+            })
+        }
+    }
+    
     @IBAction func startWalkBtnTapped(_ sender: Any) {
-        performSegue(withIdentifier: "StartWalkSegue", sender: self)
+        updateRequestWithStartDateTime()
     }
 }

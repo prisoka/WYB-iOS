@@ -57,7 +57,7 @@ struct WalkRequest: Codable {
     let id: Int
     let requestDate: Date
     let requestTimeString: String
-    let startWalkDate: Date?
+    var startWalkDate: Date?
     var finishWalkDate: Date?
     let walkerId: Int?
     
@@ -84,7 +84,9 @@ var userId: Int?
 class NetworkClient {
     
     // storing the API URL in a constant
-    let apiUrl = "https://wyb-api.herokuapp.com/api/"
+    //    let apiUrl = "https://wyb-api.herokuapp.com/api/"
+    let apiUrl = "http://localhost:3000/api/"
+
     
     // func for sending http req to login end point, and hande response
     func login(email: String, password: String, completionBlock: @escaping (LoginResponse?, NetworkResponseError?) -> Void) {
@@ -193,13 +195,93 @@ class NetworkClient {
         }
     }
     
-    func updateOneRequest(request: WalkRequest, completionBlock: @escaping (WalkRequest?, Error?) -> Void) {
+    func updateOneRequestAccepted(request: WalkRequest, completionBlock: @escaping (WalkRequest?, Error?) -> Void) {
         let encoder = JSONEncoder()
         encoder.dateEncodingStrategy = .iso8601
         
         let data = try? encoder.encode(request)
         
         if let url = URL(string: apiUrl+"requests/"+"\(request.id)") {
+            var request = URLRequest(url: url)
+            request.httpMethod = HTTPMethod.put.rawValue
+            request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
+            request.httpBody = data
+            
+            Alamofire.request(request).responseData { response in
+                print("Request: \(String(describing: response.request))")   // original url request
+                print("Response: \(String(describing: response.response))") // http url response
+                print("Result: \(response.result)")                         // response serialization result
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601Full)
+                let decodedResponse: Result<WalkRequest> = decoder.decodeResponse(from: response)
+                
+                switch decodedResponse {
+                case .success(let walkRequest):
+                    print("JSON: \(walkRequest)")
+                    completionBlock(walkRequest, nil)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    completionBlock(nil, error)
+                }
+                
+                if let json = response.result.value {
+                    print("JSON: \(json)") // serialized json response
+                }
+                
+                if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+                    print("Data: \(utf8Text)") // original server data as UTF8 string
+                }
+            }
+        }
+    }
+    
+    func updateOneRequestWalkStarts(request: WalkRequest, completionBlock: @escaping (WalkRequest?, Error?) -> Void) {
+        let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .iso8601
+        
+        let data = try? encoder.encode(request)
+        
+        if let url = URL(string: apiUrl+"requests/"+"\(request.id)/"+"start_walk") {
+            var request = URLRequest(url: url)
+            request.httpMethod = HTTPMethod.put.rawValue
+            request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
+            request.httpBody = data
+            
+            Alamofire.request(request).responseData { response in
+                print("Request: \(String(describing: response.request))")   // original url request
+                print("Response: \(String(describing: response.response))") // http url response
+                print("Result: \(response.result)")                         // response serialization result
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601Full)
+                let decodedResponse: Result<WalkRequest> = decoder.decodeResponse(from: response)
+                
+                switch decodedResponse {
+                case .success(let walkRequest):
+                    print("JSON: \(walkRequest)")
+                    completionBlock(walkRequest, nil)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    completionBlock(nil, error)
+                }
+                
+                if let json = response.result.value {
+                    print("JSON: \(json)") // serialized json response
+                }
+                
+                if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+                    print("Data: \(utf8Text)") // original server data as UTF8 string
+                }
+            }
+        }
+    }
+    
+    func updateOneRequestWalkFinishes(request: WalkRequest, completionBlock: @escaping (WalkRequest?, Error?) -> Void) {
+        let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .iso8601
+        
+        let data = try? encoder.encode(request)
+        
+        if let url = URL(string: apiUrl+"requests/"+"\(request.id)/"+"finish_walk") {
             var request = URLRequest(url: url)
             request.httpMethod = HTTPMethod.put.rawValue
             request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
